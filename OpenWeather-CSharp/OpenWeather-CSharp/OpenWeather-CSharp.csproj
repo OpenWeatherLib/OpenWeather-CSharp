@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>OpenWeather_CSharp</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="0.Crosscutting\" />
+  </ItemGroup>
+
+</Project>
