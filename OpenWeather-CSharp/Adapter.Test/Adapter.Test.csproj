@@ -29,10 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="OpenWeatherMap\Converter\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Adapter\Adapter.csproj" />
   </ItemGroup>
 

@@ -11,6 +11,6 @@ namespace Web.Models.OpenWeatherMap
 
         public DateTime DateTime { get; set; }
 
-        public int Value { get; set; }
+        public double Value { get; set; }
     }
 }

@@ -11,6 +11,6 @@ namespace Domain.OpenWeatherMap.Model
 
         public DateTime DateTime { get; set; }
 
-        public int Value { get; set; }
+        public double Value { get; set; }
     }
 }
