@@ -1,11 +1,17 @@
 ﻿using AutoMapper;
-using Services.Unsplash.Enum;
-using Web.Models.Unsplash.Enum;
+using GuepardoApps.OpenWeatherLib.Services.Unsplash.Enum;
+using GuepardoApps.OpenWeatherLib.Web.Models.Unsplash.Enum;
 
-namespace Web.Models.Unsplash.MappingProfile
+namespace GuepardoApps.OpenWeatherLib.Web.Models.Unsplash.MappingProfile
 {
+    /// <summary>
+    /// MappingProfile
+    /// </summary>
     public class MappingProfile : Profile
     {
+        /// <summary>
+        /// MappingProfile
+        /// </summary>
         public MappingProfile()
         {
             CreateMap<UnsplashImageOrientationViewModelEnum, UnsplashImageOrientationDtoEnum>();

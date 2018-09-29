@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Crosscutting.Helper;
-using Domain.DataScienceToolkit.Model;
-using Domain.OpenWeatherMap.Enum;
-using Domain.OpenWeatherMap.Model;
+using GuepardoApps.OpenWeatherLib.Crosscutting.Helper;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
+using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Enum;
+using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Model;
 using Newtonsoft.Json.Linq;
 using Serilog;
 
-namespace Adapter.OpenWeatherMap.Converter
+namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
 {
     public class JsonToWeatherCurrentConverter : IJsonToWeatherCurrentConverter
     {

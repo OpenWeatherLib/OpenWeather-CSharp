@@ -1,6 +1,6 @@
-﻿using Services.Unsplash.Enum;
+﻿using GuepardoApps.OpenWeatherLib.Services.Unsplash.Enum;
 
-namespace Services.Unsplash
+namespace GuepardoApps.OpenWeatherLib.Services.Unsplash
 {
     public interface IUnsplashService
     {

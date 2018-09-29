@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Services.Validation
+namespace GuepardoApps.OpenWeatherLib.Services.Validation
 {
     public interface IValidationService
     {

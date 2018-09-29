@@ -1,6 +1,6 @@
-using Domain.DataScienceToolkit.Model;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
 
-namespace Adapter.DataScienceToolkit.Converter
+namespace GuepardoApps.OpenWeatherLib.Adapter.DataScienceToolkit.Converter
 {
     public interface IJsonToCityConverter
     {

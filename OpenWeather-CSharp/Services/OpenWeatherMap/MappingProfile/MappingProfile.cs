@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Domain.DataScienceToolkit.Model;
-using Domain.OpenWeatherMap.Enum;
-using Domain.OpenWeatherMap.Model;
-using Services.DataScienceToolkit.Dto;
-using Services.OpenWeatherMap.Dto;
-using Services.OpenWeatherMap.Enum;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
+using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Enum;
+using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Model;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
+using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto;
+using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Enum;
 
-namespace Services.OpenWeatherMap.MappingProfile
+namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.MappingProfile
 {
     public class MappingProfile : Profile
     {

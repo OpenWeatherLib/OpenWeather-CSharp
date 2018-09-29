@@ -1,7 +1,7 @@
-﻿using Services.DataScienceToolkit.Dto;
+﻿using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
 using System.Collections.Generic;
 
-namespace Services.OpenWeatherMap.Dto
+namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto
 {
     public class WeatherForecastDto
     {

@@ -1,10 +1,10 @@
 ﻿using System;
-using Domain.DataScienceToolkit.Model;
-using Domain.OpenWeatherMap.Model;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
+using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Model;
 using Newtonsoft.Json.Linq;
 using Serilog;
 
-namespace Adapter.OpenWeatherMap.Converter
+namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
 {
     public class JsonToUvIndexConverter : IJsonToUvIndexConverter
     {

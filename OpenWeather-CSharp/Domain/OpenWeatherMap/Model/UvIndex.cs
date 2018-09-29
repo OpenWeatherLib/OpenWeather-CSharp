@@ -1,7 +1,7 @@
-﻿using Domain.DataScienceToolkit.Model;
+﻿using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
 using System;
 
-namespace Domain.OpenWeatherMap.Model
+namespace GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Model
 {
     public class UvIndex
     {

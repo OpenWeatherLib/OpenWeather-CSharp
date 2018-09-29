@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Domain.OpenWeatherMap.Enum
+namespace GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Enum
 {
     public class WeatherConditionEnum
     {
@@ -91,11 +91,6 @@ namespace Domain.OpenWeatherMap.Enum
             }
 
             return Null;
-        }
-
-        public override string ToString()
-        {
-            return Description;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.OpenWeatherMap.Model
+namespace GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Model
 {
     public class Sys
     {

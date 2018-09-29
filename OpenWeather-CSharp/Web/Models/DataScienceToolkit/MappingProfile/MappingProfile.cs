@@ -1,10 +1,16 @@
 ﻿using AutoMapper;
-using Services.DataScienceToolkit.Dto;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
 
-namespace Web.Models.DataScienceToolkit.MappingProfile
+namespace GuepardoApps.OpenWeatherLib.Web.Models.DataScienceToolkit.MappingProfile
 {
+    /// <summary>
+    /// MappingProfile
+    /// </summary>
     public class MappingProfile : Profile
     {
+        /// <summary>
+        /// MappingProfile
+        /// </summary>
         public MappingProfile()
         {
             CreateMap<CityDto, CityViewModel>();

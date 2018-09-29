@@ -1,9 +1,9 @@
-﻿using Domain.DataScienceToolkit.Model;
-using Domain.OpenWeatherMap.Enum;
+﻿using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
+using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Enum;
 using System;
 using System.Collections.Generic;
 
-namespace Domain.OpenWeatherMap.Model
+namespace GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Model
 {
     public class WeatherCurrent
     {

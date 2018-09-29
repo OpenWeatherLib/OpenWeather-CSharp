@@ -1,6 +1,6 @@
-using Domain.OpenWeatherMap.Model;
+using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Model;
 
-namespace Adapter.OpenWeatherMap.Converter
+namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
 {
     public interface IJsonToUvIndexConverter
     {

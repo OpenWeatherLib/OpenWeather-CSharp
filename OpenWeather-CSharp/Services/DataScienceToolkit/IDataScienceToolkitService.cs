@@ -1,6 +1,6 @@
-﻿using Services.DataScienceToolkit.Dto;
+﻿using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
 
-namespace Services.DataScienceToolkit
+namespace GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit
 {
     public interface IDataScienceToolkitService
     {

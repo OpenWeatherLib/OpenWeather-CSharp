@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using FluentAssertions;
 using NSubstitute;
-using Services.DataScienceToolkit.Dto;
-using Services.OpenWeatherMap;
-using Services.OpenWeatherMap.Dto;
-using Web.Controllers;
-using Web.Models.DataScienceToolkit;
-using Web.Models.OpenWeatherMap;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
+using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap;
+using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto;
+using GuepardoApps.OpenWeatherLib.Web.Controllers;
+using GuepardoApps.OpenWeatherLib.Web.Models.DataScienceToolkit;
+using GuepardoApps.OpenWeatherLib.Web.Models.OpenWeatherMap;
 using Xunit;
 
-namespace Web.Test.OpenWeatherMap
+namespace GuepardoApps.OpenWeatherLib.Web.Test.OpenWeatherMap
 {
     public class OpenWeatherMapControllerTests
     {

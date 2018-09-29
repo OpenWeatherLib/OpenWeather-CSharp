@@ -10,10 +10,16 @@
     <OutputType>Exe</OutputType>
 
     <StartupObject />
+
+    <RootNamespace>GuepardoApps.OpenWeatherLib.Adapter.Test</RootNamespace>
+
+    <AssemblyName>GuepardoApps.OpenWeatherLib.Adapter.Test</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.0" />
+    <PackageReference Include="AutofacSerilogIntegration" Version="2.0.0" />
     <PackageReference Include="AutoMapper" Version="7.0.1" />
     <PackageReference Include="FluentAssertions" Version="5.4.2" />
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.6" />

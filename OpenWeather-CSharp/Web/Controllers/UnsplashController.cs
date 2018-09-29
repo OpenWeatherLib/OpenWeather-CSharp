@@ -1,25 +1,38 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Services.Unsplash;
-using Services.Unsplash.Enum;
-using Web.Models.Unsplash.Enum;
+using GuepardoApps.OpenWeatherLib.Services.Unsplash;
+using GuepardoApps.OpenWeatherLib.Services.Unsplash.Enum;
+using GuepardoApps.OpenWeatherLib.Web.Models.Unsplash.Enum;
 
-namespace Web.Controllers
+namespace GuepardoApps.OpenWeatherLib.Web.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UnsplashController
+    /// <summary>
+    /// UnsplashController
+    /// </summary>
+    [Route("api/[controller]/[action]")]
+    public class UnsplashController : Controller
     {
         private readonly IMapper _mapper;
 
         private readonly IUnsplashService _unsplashService;
 
+        /// <summary>
+        /// UnsplashController
+        /// </summary>
+        /// <param name="mapper">mapper</param>
+        /// <param name="unsplashService">service</param>
         public UnsplashController(IMapper mapper, IUnsplashService unsplashService)
         {
             _mapper = mapper;
             _unsplashService = unsplashService;
         }
 
+        /// <summary>
+        /// ReceiveImagePictureUrl
+        /// </summary>
+        /// <param name="cityName">cityName</param>
+        /// <param name="unsplashImageOrientationViewModelEnumId">unsplashImageOrientationViewModelEnumId</param>
+        /// <returns>string</returns>
         [HttpGet]
         public ActionResult<string> ReceiveImagePictureUrl(string cityName, int unsplashImageOrientationViewModelEnumId)
         {

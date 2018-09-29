@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Domain.Unsplash.Enum
+namespace GuepardoApps.OpenWeatherLib.Domain.Unsplash.Enum
 {
     public class UnsplashImageOrientationEnum
     {
@@ -64,11 +64,6 @@ namespace Domain.Unsplash.Enum
             }
 
             return Null;
-        }
-
-        public override string ToString()
-        {
-            return Description;
         }
     }
 }

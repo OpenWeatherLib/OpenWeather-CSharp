@@ -1,10 +1,10 @@
-﻿using Adapter.OpenWeatherMap.Converter;
+﻿using GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter;
 using FluentAssertions;
 using NSubstitute;
 using Serilog;
 using Xunit;
 
-namespace Adapter.Test.OpenWeatherMap.Converter
+namespace GuepardoApps.OpenWeatherLib.Adapter.Test.OpenWeatherMap.Converter
 {
     public class JsonToWeatherCurrentConverterTests
     {

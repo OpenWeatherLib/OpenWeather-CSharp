@@ -1,9 +1,9 @@
-﻿using Crosscutting.Helper;
+﻿using GuepardoApps.OpenWeatherLib.Crosscutting.Helper;
 using FluentAssertions;
 using System;
 using Xunit;
 
-namespace Crosscutting.Test.Helper
+namespace GuepardoApps.OpenWeatherLib.Crosscutting.Test.Helper
 {
     public class UnixToDateTimeTests
     {

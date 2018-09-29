@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using FluentAssertions;
 using NSubstitute;
-using Services.DataScienceToolkit;
-using Services.DataScienceToolkit.Dto;
-using Web.Controllers;
-using Web.Models.DataScienceToolkit;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
+using GuepardoApps.OpenWeatherLib.Web.Controllers;
+using GuepardoApps.OpenWeatherLib.Web.Models.DataScienceToolkit;
 using Xunit;
 
-namespace Web.Test.DataScienceToolkit
+namespace GuepardoApps.OpenWeatherLib.Web.Test.DataScienceToolkit
 {
     public class DataScienceToolkitControllerTests
     {

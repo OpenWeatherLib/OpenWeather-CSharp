@@ -1,9 +1,9 @@
-﻿using Adapter.DataScienceToolkit.Converter;
-using Domain.DataScienceToolkit;
-using Domain.DataScienceToolkit.Model;
+﻿using GuepardoApps.OpenWeatherLib.Adapter.DataScienceToolkit.Converter;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
 using System.Net;
 
-namespace Adapter.DataScienceToolkit
+namespace GuepardoApps.OpenWeatherLib.Adapter.DataScienceToolkit
 {
     public class DataScienceToolkitAdapter : IDataScienceToolkitAdapter
     {

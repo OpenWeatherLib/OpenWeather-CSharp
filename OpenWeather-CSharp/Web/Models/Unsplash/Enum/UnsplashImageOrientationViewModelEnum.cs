@@ -1,17 +1,35 @@
 ﻿using System.Collections.Generic;
 
-namespace Web.Models.Unsplash.Enum
+namespace GuepardoApps.OpenWeatherLib.Web.Models.Unsplash.Enum
 {
+    /// <summary>
+    /// UnsplashImageOrientationViewModelEnum
+    /// </summary>
     public class UnsplashImageOrientationViewModelEnum
     {
+        /// <summary>
+        /// Null
+        /// </summary>
         public static readonly UnsplashImageOrientationViewModelEnum Null = new UnsplashImageOrientationViewModelEnum(0, "Null");
 
+        /// <summary>
+        /// Landscape
+        /// </summary>
         public static readonly UnsplashImageOrientationViewModelEnum Landscape = new UnsplashImageOrientationViewModelEnum(1, "landscape");
 
+        /// <summary>
+        /// Portrait
+        /// </summary>
         public static readonly UnsplashImageOrientationViewModelEnum Portrait = new UnsplashImageOrientationViewModelEnum(2, "portrait");
 
+        /// <summary>
+        /// Squarish
+        /// </summary>
         public static readonly UnsplashImageOrientationViewModelEnum Squarish = new UnsplashImageOrientationViewModelEnum(3, "squarish");
 
+        /// <summary>
+        /// Values
+        /// </summary>
         public static IEnumerable<UnsplashImageOrientationViewModelEnum> Values
         {
             get
@@ -29,10 +47,21 @@ namespace Web.Models.Unsplash.Enum
             Description = description;
         }
 
+        /// <summary>
+        /// Id
+        /// </summary>
         public int Id { get; }
 
+        /// <summary>
+        /// Description
+        /// </summary>
         public string Description { get; }
 
+        /// <summary>
+        /// Get by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>UnsplashImageOrientationViewModelEnum</returns>
         public static UnsplashImageOrientationViewModelEnum GetById(int id)
         {
             foreach (UnsplashImageOrientationViewModelEnum entry in Values)
@@ -46,6 +75,11 @@ namespace Web.Models.Unsplash.Enum
             return Null;
         }
 
+        /// <summary>
+        /// Get by description
+        /// </summary>
+        /// <param name="description"></param>
+        /// <returns>UnsplashImageOrientationViewModelEnum</returns>
         public static UnsplashImageOrientationViewModelEnum GetByDescription(string description)
         {
             foreach (UnsplashImageOrientationViewModelEnum entry in Values)
@@ -64,11 +98,6 @@ namespace Web.Models.Unsplash.Enum
             }
 
             return Null;
-        }
-
-        public override string ToString()
-        {
-            return Description;
         }
     }
 }

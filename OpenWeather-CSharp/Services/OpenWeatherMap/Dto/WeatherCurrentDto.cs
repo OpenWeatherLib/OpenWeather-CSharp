@@ -1,9 +1,9 @@
-﻿using Services.DataScienceToolkit.Dto;
-using Services.OpenWeatherMap.Enum;
+﻿using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
+using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Enum;
 using System;
 using System.Collections.Generic;
 
-namespace Services.OpenWeatherMap.Dto
+namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto
 {
     public class WeatherCurrentDto
     {

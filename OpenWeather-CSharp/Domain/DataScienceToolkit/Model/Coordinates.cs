@@ -1,6 +1,6 @@
-﻿using Crosscutting.Attributes;
+﻿using GuepardoApps.OpenWeatherLib.Crosscutting.Attributes;
 
-namespace Domain.DataScienceToolkit.Model
+namespace GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model
 {
     public class Coordinates
     {

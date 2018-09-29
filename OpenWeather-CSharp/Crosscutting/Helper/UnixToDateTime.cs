@@ -6,7 +6,7 @@
  * https://stackoverflow.com/questions/249760/how-to-convert-a-unix-timestamp-to-datetime-and-vice-versa
  */
 
-namespace Crosscutting.Helper
+namespace GuepardoApps.OpenWeatherLib.Crosscutting.Helper
 {
     public static class UnixToDateTime
     {

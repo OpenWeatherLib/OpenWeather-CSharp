@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Crosscutting.Attributes;
-using Crosscutting.Extensions;
+using GuepardoApps.OpenWeatherLib.Crosscutting.Attributes;
+using GuepardoApps.OpenWeatherLib.Crosscutting.Extensions;
 
-namespace Services.Validation
+namespace GuepardoApps.OpenWeatherLib.Services.Validation
 {
     public class ValidationService : IValidationService
     {

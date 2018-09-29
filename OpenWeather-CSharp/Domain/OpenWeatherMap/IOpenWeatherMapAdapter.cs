@@ -1,7 +1,7 @@
-﻿using Domain.DataScienceToolkit.Model;
-using Domain.OpenWeatherMap.Model;
+﻿using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
+using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Model;
 
-namespace Domain.OpenWeatherMap
+namespace GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap
 {
     public interface IOpenWeatherMapAdapter
     {

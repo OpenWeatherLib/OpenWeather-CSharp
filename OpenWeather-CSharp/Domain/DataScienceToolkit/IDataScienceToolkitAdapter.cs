@@ -1,6 +1,6 @@
-﻿using Domain.DataScienceToolkit.Model;
+﻿using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
 
-namespace Domain.DataScienceToolkit
+namespace GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit
 {
     public interface IDataScienceToolkitAdapter
     {

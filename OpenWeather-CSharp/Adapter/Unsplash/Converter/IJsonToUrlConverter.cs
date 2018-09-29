@@ -1,4 +1,4 @@
-namespace Adapter.Unsplash.Converter
+namespace GuepardoApps.OpenWeatherLib.Adapter.Unsplash.Converter
 {
     public interface IJsonToUrlConverter
     {

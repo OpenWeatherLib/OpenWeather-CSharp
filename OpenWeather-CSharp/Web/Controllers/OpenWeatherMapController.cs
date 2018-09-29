@@ -1,26 +1,38 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Services.DataScienceToolkit.Dto;
-using Services.OpenWeatherMap;
-using Web.Models.DataScienceToolkit;
-using Web.Models.OpenWeatherMap;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
+using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap;
+using GuepardoApps.OpenWeatherLib.Web.Models.DataScienceToolkit;
+using GuepardoApps.OpenWeatherLib.Web.Models.OpenWeatherMap;
 
-namespace Web.Controllers
+namespace GuepardoApps.OpenWeatherLib.Web.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class OpenWeatherMapController
+    /// <summary>
+    /// OpenWeatherMapController
+    /// </summary>
+    [Route("api/[controller]/[action]")]
+    public class OpenWeatherMapController : Controller
     {
         private readonly IMapper _mapper;
 
         private readonly IOpenWeatherMapService _openWeatherMapService;
 
+        /// <summary>
+        /// OpenWeatherMapController
+        /// </summary>
+        /// <param name="mapper">mapper</param>
+        /// <param name="openWeatherMapService">service</param>
         public OpenWeatherMapController(IMapper mapper, IOpenWeatherMapService openWeatherMapService)
         {
             _mapper = mapper;
             _openWeatherMapService = openWeatherMapService;
         }
 
+        /// <summary>
+        /// LoadWeatherCurrent
+        /// </summary>
+        /// <param name="cityViewModel">cityViewModel</param>
+        /// <returns>WeatherCurrentViewModel</returns>
         [HttpGet]
         public ActionResult<WeatherCurrentViewModel> LoadWeatherCurrent([FromQuery]CityViewModel cityViewModel)
         {
@@ -30,6 +42,11 @@ namespace Web.Controllers
             return weatherCurrentViewModel;
         }
 
+        /// <summary>
+        /// LoadWeatherForecast
+        /// </summary>
+        /// <param name="cityViewModel">cityViewModel</param>
+        /// <returns>WeatherForecastViewModel</returns>
         [HttpGet]
         public ActionResult<WeatherForecastViewModel> LoadWeatherForecast([FromQuery]CityViewModel cityViewModel)
         {
@@ -39,6 +56,11 @@ namespace Web.Controllers
             return weatherForecastViewModel;
         }
 
+        /// <summary>
+        /// LoadUvIndex
+        /// </summary>
+        /// <param name="cityViewModel">cityViewModel</param>
+        /// <returns>UvIndexViewModel</returns>
         [HttpGet]
         public ActionResult<UvIndexViewModel> LoadUvIndex([FromQuery]CityViewModel cityViewModel)
         {

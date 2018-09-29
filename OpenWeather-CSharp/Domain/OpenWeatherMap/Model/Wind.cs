@@ -1,4 +1,4 @@
-﻿namespace Domain.OpenWeatherMap.Model
+﻿namespace GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Model
 {
     public class Wind
     {

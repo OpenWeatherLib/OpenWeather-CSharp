@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Services.OpenWeatherMap.Dto
+namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto
 {
     public class SysDto
     {

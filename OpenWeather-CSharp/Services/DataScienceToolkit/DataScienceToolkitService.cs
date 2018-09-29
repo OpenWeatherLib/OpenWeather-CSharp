@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Domain.DataScienceToolkit;
-using Services.DataScienceToolkit.Dto;
-using Services.Validation;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
+using GuepardoApps.OpenWeatherLib.Services.Validation;
 
-namespace Services.DataScienceToolkit
+namespace GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit
 {
     public class DataScienceToolkitService : IDataScienceToolkitService
     {

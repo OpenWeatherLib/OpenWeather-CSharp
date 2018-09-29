@@ -1,4 +1,4 @@
-﻿namespace Services.DataScienceToolkit.Dto
+﻿namespace GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto
 {
     public class CoordinatesDto
     {

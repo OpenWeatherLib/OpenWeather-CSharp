@@ -1,9 +1,9 @@
-﻿using Crosscutting.Attributes;
+﻿using GuepardoApps.OpenWeatherLib.Crosscutting.Attributes;
 using FluentAssertions;
-using Services.Validation;
+using GuepardoApps.OpenWeatherLib.Services.Validation;
 using Xunit;
 
-namespace Services.Test.Validation
+namespace GuepardoApps.OpenWeatherLib.Services.Test.Validation
 {
     public class ValidationServiceTests
     {

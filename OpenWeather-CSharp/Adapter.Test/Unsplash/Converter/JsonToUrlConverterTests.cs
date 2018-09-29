@@ -1,10 +1,10 @@
-﻿using Adapter.Unsplash.Converter;
+﻿using GuepardoApps.OpenWeatherLib.Adapter.Unsplash.Converter;
 using FluentAssertions;
 using NSubstitute;
 using Serilog;
 using Xunit;
 
-namespace Adapter.Test.Unsplash.Converter
+namespace GuepardoApps.OpenWeatherLib.Adapter.Test.Unsplash.Converter
 {
     public class JsonToUrlConverterTests
     {

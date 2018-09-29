@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using FluentAssertions;
 using NSubstitute;
-using Services.Unsplash;
-using Services.Unsplash.Enum;
-using Web.Controllers;
-using Web.Models.Unsplash.Enum;
+using GuepardoApps.OpenWeatherLib.Services.Unsplash;
+using GuepardoApps.OpenWeatherLib.Services.Unsplash.Enum;
+using GuepardoApps.OpenWeatherLib.Web.Controllers;
+using GuepardoApps.OpenWeatherLib.Web.Models.Unsplash.Enum;
 using Xunit;
 
-namespace Web.Test.Unsplash
+namespace GuepardoApps.OpenWeatherLib.Web.Test.Unsplash
 {
     public class UnsplashControllerTests
     {

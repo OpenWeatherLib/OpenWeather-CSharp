@@ -1,9 +1,9 @@
 ﻿using System;
-using Domain.DataScienceToolkit.Model;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
 using Newtonsoft.Json.Linq;
 using Serilog;
 
-namespace Adapter.DataScienceToolkit.Converter
+namespace GuepardoApps.OpenWeatherLib.Adapter.DataScienceToolkit.Converter
 {
     public class JsonToCityConverter : IJsonToCityConverter
     {

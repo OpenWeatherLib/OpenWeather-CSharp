@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using Domain.DataScienceToolkit;
-using Domain.DataScienceToolkit.Model;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
 using FluentAssertions;
 using NSubstitute;
-using Services.DataScienceToolkit;
-using Services.DataScienceToolkit.Dto;
-using Services.Validation;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
+using GuepardoApps.OpenWeatherLib.Services.Validation;
 using Xunit;
 
-namespace Services.Test.DataScienceToolkit
+namespace GuepardoApps.OpenWeatherLib.Services.Test.DataScienceToolkit
 {
     public class DataScienceToolkitServiceTests
     {

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Domain.Unsplash.Enum;
-using Services.Unsplash.Enum;
+using GuepardoApps.OpenWeatherLib.Domain.Unsplash.Enum;
+using GuepardoApps.OpenWeatherLib.Services.Unsplash.Enum;
 
-namespace Services.Unsplash.MappingProfile
+namespace GuepardoApps.OpenWeatherLib.Services.Unsplash.MappingProfile
 {
     public class MappingProfile : Profile
     {

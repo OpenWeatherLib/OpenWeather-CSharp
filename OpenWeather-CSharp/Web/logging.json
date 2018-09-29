@@ -1,0 +1,19 @@
+﻿{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Error"
+      }
+    },
+    "WriteTo": [
+      {
+      }
+    ],
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithEnvironmentUserName", "WithProcessId", "WithThreadId", "WithExceptionDetails" ],
+    "Properties": {
+      "Application": "OpenWeatherLib"
+    }
+  }
+}

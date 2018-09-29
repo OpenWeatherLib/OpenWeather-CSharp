@@ -1,10 +1,10 @@
-﻿using Adapter.DataScienceToolkit.Converter;
+﻿using GuepardoApps.OpenWeatherLib.Adapter.DataScienceToolkit.Converter;
 using FluentAssertions;
 using NSubstitute;
 using Serilog;
 using Xunit;
 
-namespace Adapter.Test.DataScienceToolkit.Converter
+namespace GuepardoApps.OpenWeatherLib.Adapter.Test.DataScienceToolkit.Converter
 {
     public class JsonToCityConverterTests
     {

@@ -1,15 +1,21 @@
 ﻿using AutoMapper;
-using Services.DataScienceToolkit.Dto;
-using Services.OpenWeatherMap.Dto;
-using Services.OpenWeatherMap.Enum;
-using Web.Models.DataScienceToolkit;
-using Web.Models.OpenWeatherMap;
-using Web.Models.OpenWeatherMap.Enum;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
+using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto;
+using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Enum;
+using GuepardoApps.OpenWeatherLib.Web.Models.DataScienceToolkit;
+using GuepardoApps.OpenWeatherLib.Web.Models.OpenWeatherMap;
+using GuepardoApps.OpenWeatherLib.Web.Models.OpenWeatherMap.Enum;
 
-namespace Services.OpenWeatherMap.MappingProfile
+namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.MappingProfile
 {
+    /// <summary>
+    /// MappingProfile
+    /// </summary>
     public class MappingProfile : Profile
     {
+        /// <summary>
+        /// MappingProfile
+        /// </summary>
         public MappingProfile()
         {
             CreateMap<CityViewModel, CityDto>();

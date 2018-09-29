@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using Domain.DataScienceToolkit.Model;
-using Domain.OpenWeatherMap;
-using Services.DataScienceToolkit.Dto;
-using Services.OpenWeatherMap.Dto;
-using Services.Validation;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
+using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
+using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto;
+using GuepardoApps.OpenWeatherLib.Services.Validation;
 
-namespace Services.OpenWeatherMap
+namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
 {
     public class OpenWeatherMapService : IOpenWeatherMapService
     {

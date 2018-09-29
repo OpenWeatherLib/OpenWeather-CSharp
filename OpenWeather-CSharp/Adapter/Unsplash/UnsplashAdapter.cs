@@ -1,9 +1,9 @@
-﻿using Adapter.Unsplash.Converter;
-using Domain.Unsplash;
-using Domain.Unsplash.Enum;
+﻿using GuepardoApps.OpenWeatherLib.Adapter.Unsplash.Converter;
+using GuepardoApps.OpenWeatherLib.Domain.Unsplash;
+using GuepardoApps.OpenWeatherLib.Domain.Unsplash.Enum;
 using System.Net;
 
-namespace Adapter.Unsplash
+namespace GuepardoApps.OpenWeatherLib.Adapter.Unsplash
 {
     public class UnsplashAdapter : IUnsplashAdapter
     {

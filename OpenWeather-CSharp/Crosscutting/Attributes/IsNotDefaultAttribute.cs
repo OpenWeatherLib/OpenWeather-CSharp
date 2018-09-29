@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Crosscutting.Attributes
+namespace GuepardoApps.OpenWeatherLib.Crosscutting.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class IsNotDefaultAttribute : Attribute

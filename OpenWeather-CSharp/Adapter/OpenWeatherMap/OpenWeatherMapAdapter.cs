@@ -1,10 +1,10 @@
-﻿using Adapter.OpenWeatherMap.Converter;
-using Domain.DataScienceToolkit.Model;
-using Domain.OpenWeatherMap;
-using Domain.OpenWeatherMap.Model;
+﻿using GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
+using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap;
+using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Model;
 using System.Net;
 
-namespace Adapter.DataScienceToolkit
+namespace GuepardoApps.OpenWeatherLib.Adapter.DataScienceToolkit
 {
     public class OpenWeatherMapAdapter : IOpenWeatherMapAdapter
     {

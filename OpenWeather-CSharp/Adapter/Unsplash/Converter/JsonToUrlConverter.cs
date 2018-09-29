@@ -2,7 +2,7 @@
 using Serilog;
 using System;
 
-namespace Adapter.Unsplash.Converter
+namespace GuepardoApps.OpenWeatherLib.Adapter.Unsplash.Converter
 {
     public class JsonToUrlConverter : IJsonToUrlConverter
     {
