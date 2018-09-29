@@ -19,8 +19,7 @@ namespace Web.Controllers
             _dataScienceToolkitService = dataScienceToolkitService;
         }
 
-        // GET api/dataScienceToolkit/Nuremberg
-        [HttpGet("{cityName}")]
+        [HttpGet]
         public ActionResult<CityViewModel> LoadCityData(string cityName)
         {
             var cityDto = _dataScienceToolkitService.LoadCityData(cityName);

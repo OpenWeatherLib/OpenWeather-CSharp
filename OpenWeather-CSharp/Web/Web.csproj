@@ -8,8 +8,6 @@
     <Folder Include="Models\DataScienceToolkit\Enum\" />
     <Folder Include="Models\OpenWeatherMap\Enum\" />
     <Folder Include="Models\OpenWeatherMap\MappingProfile\" />
-    <Folder Include="Models\Unsplash\Enum\" />
-    <Folder Include="Models\Unsplash\MappingProfile\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
