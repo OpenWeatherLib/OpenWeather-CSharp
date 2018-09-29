@@ -5,10 +5,10 @@ namespace Domain.OpenWeatherMap
 {
     public interface IOpenWeatherMapAdapter
     {
-        UvIndex LoadUvIndex(City city);
+        WeatherCurrent LoadWeatherCurrent(string apiKey, City city);
 
-        WeatherCurrent LoadWeatherCurrent(City city);
+        WeatherForecast LoadWeatherForecast(string apiKey, City city);
 
-        WeatherForecast LoadWeatherForecast(City city);
+        UvIndex LoadUvIndex(string apiKey, City city);
     }
 }

@@ -34,7 +34,7 @@ namespace Services.Test.OpenWeatherMap
         {
             // Arrange
             _mapper.Map<City>(Arg.Any<CityDto>()).Returns(new City());
-            _openWeatherMapAdapter.LoadWeatherCurrent(Arg.Any<City>()).Returns(new WeatherCurrent());
+            _openWeatherMapAdapter.LoadWeatherCurrent(Arg.Any<string>(), Arg.Any<City>()).Returns(new WeatherCurrent());
             _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
             _mapper.Map<WeatherCurrentDto>(Arg.Any<WeatherCurrent>()).Returns(new WeatherCurrentDto());
             _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
@@ -51,7 +51,7 @@ namespace Services.Test.OpenWeatherMap
         {
             // Arrange
             _mapper.Map<City>(Arg.Any<CityDto>()).Returns(new City());
-            _openWeatherMapAdapter.LoadWeatherForecast(Arg.Any<City>()).Returns(new WeatherForecast());
+            _openWeatherMapAdapter.LoadWeatherForecast(Arg.Any<string>(), Arg.Any<City>()).Returns(new WeatherForecast());
             _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
             _mapper.Map<WeatherForecastDto>(Arg.Any<WeatherForecast>()).Returns(new WeatherForecastDto());
             _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
@@ -68,7 +68,7 @@ namespace Services.Test.OpenWeatherMap
         {
             // Arrange
             _mapper.Map<City>(Arg.Any<CityDto>()).Returns(new City());
-            _openWeatherMapAdapter.LoadUvIndex(Arg.Any<City>()).Returns(new UvIndex());
+            _openWeatherMapAdapter.LoadUvIndex(Arg.Any<string>(), Arg.Any<City>()).Returns(new UvIndex());
             _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
             _mapper.Map<UvIndexDto>(Arg.Any<UvIndex>()).Returns(new UvIndexDto());
             _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);

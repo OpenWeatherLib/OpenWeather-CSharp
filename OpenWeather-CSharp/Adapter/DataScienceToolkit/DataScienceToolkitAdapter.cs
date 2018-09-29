@@ -7,7 +7,7 @@ namespace Adapter.DataScienceToolkit
 {
     public class DataScienceToolkitAdapter : IDataScienceToolkitAdapter
     {
-        private const string geoCodeForCityUrl = "http://www.datasciencetoolkit.org/maps/api/geocode/json?address={0}";
+        private const string GeoCodeForCityUrl = "http://www.datasciencetoolkit.org/maps/api/geocode/json?address={0}";
 
         private readonly IJsonToCityConverter _jsonToCityConverter;
 
@@ -22,7 +22,7 @@ namespace Adapter.DataScienceToolkit
 
         public City LoadCityData(string cityName)
         {
-            string url = string.Format(geoCodeForCityUrl, cityName);
+            string url = string.Format(GeoCodeForCityUrl, cityName);
             string response = _webClient.DownloadString(url);
             return _jsonToCityConverter.Convert(response);
         }

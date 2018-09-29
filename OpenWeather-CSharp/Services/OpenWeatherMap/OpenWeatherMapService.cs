@@ -15,6 +15,9 @@ namespace Services.OpenWeatherMap
 
         private readonly IOpenWeatherMapAdapter _openWeatherMapAdapter;
 
+        // TODO
+        private readonly string _apiKey = "TODO_READ_OUT_CONFIG";
+
         public OpenWeatherMapService(
             IMapper mapper,
             IValidationService validationService,
@@ -34,7 +37,7 @@ namespace Services.OpenWeatherMap
                 return null;
             }
 
-            var weatherCurrent = _openWeatherMapAdapter.LoadWeatherCurrent(city);
+            var weatherCurrent = _openWeatherMapAdapter.LoadWeatherCurrent(_apiKey, city);
 
             return _mapper.Map<WeatherCurrentDto>(weatherCurrent);
         }
@@ -48,7 +51,7 @@ namespace Services.OpenWeatherMap
                 return null;
             }
 
-            var weatherForecast = _openWeatherMapAdapter.LoadWeatherForecast(city);
+            var weatherForecast = _openWeatherMapAdapter.LoadWeatherForecast(_apiKey, city);
 
             return _mapper.Map<WeatherForecastDto>(weatherForecast);
         }
@@ -62,7 +65,7 @@ namespace Services.OpenWeatherMap
                 return null;
             }
 
-            var uvIndex = _openWeatherMapAdapter.LoadUvIndex(city);
+            var uvIndex = _openWeatherMapAdapter.LoadUvIndex(_apiKey, city);
 
             return _mapper.Map<UvIndexDto>(uvIndex);
         }
