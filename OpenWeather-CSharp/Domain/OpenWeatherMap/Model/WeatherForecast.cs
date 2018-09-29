@@ -7,7 +7,7 @@ namespace Domain.OpenWeatherMap.Model
     {
         public string Cod { get; set; }
 
-        public int Message { get; set; }
+        public double Message { get; set; }
 
         public uint Count { get; set; }
 

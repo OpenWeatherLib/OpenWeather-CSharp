@@ -2,20 +2,20 @@
 {
     public class MainDto
     {
-        public float Temperature { get; set; }
+        public double Temperature { get; set; }
 
-        public float TemperatureMin { get; set; }
+        public double TemperatureMin { get; set; }
 
-        public float TemperatureMax { get; set; }
+        public double TemperatureMax { get; set; }
 
-        public float TemperatureKf { get; set; }
+        public double TemperatureKf { get; set; }
 
-        public float Pressure { get; set; }
+        public double Pressure { get; set; }
 
-        public float PressureSeaLevel { get; set; }
+        public double PressureSeaLevel { get; set; }
 
-        public float PressureGroundLevel { get; set; }
+        public double PressureGroundLevel { get; set; }
 
-        public float Humidity { get; set; }
+        public double Humidity { get; set; }
     }
 }

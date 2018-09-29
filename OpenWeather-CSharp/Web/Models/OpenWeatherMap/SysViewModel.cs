@@ -8,7 +8,7 @@ namespace Web.Models.OpenWeatherMap
 
         public int Type { get; set; }
 
-        public int Message { get; set; }
+        public double Message { get; set; }
 
         public string Country { get; set; }
 

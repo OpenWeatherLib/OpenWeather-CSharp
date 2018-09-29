@@ -2,8 +2,8 @@
 {
     public class Wind
     {
-        public float Speed { get; set; }
+        public double Speed { get; set; }
 
-        public float Degree { get; set; }
+        public double Degree { get; set; }
     }
 }
