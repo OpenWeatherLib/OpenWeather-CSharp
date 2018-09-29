@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Crosscutting.Attributes;
-using Crosscutting.Extensions;
+using GuepardoApps.OpenWeatherLib.Crosscutting.Attributes;
+using GuepardoApps.OpenWeatherLib.Crosscutting.Extensions;
 
-namespace Services.Validation
+namespace GuepardoApps.OpenWeatherLib.Services.Validation
 {
     public class ValidationService : IValidationService
     {
@@ -18,6 +18,7 @@ namespace Services.Validation
             };
 
             var totalValidations = defaultValidations.Union(additionalValidations ?? new Func<bool>[0]).ToList();
+            totalValidations.ForEach(validationMethod => valid &= validationMethod());
 
             return valid;
         }
@@ -57,7 +58,7 @@ namespace Services.Validation
                 var defaultValue = Convert.ChangeType(isNotDefaultProperty.attribute.DefaultValue, valueType);
                 var propertyValue = Convert.ChangeType(isNotDefaultProperty.property.GetValue(validationObject), valueType);
 
-                if (defaultValue == propertyValue)
+                if (defaultValue.Equals(propertyValue))
                 {
                     return false;
                 }

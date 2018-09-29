@@ -1,7 +1,7 @@
-﻿using Services.DataScienceToolkit.Dto;
+﻿using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
 using System;
 
-namespace Services.OpenWeatherMap.Dto
+namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto
 {
     public class UvIndexDto
     {
@@ -11,6 +11,6 @@ namespace Services.OpenWeatherMap.Dto
 
         public DateTime DateTime { get; set; }
 
-        public int Value { get; set; }
+        public double Value { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Crosscutting.Extensions
+﻿namespace GuepardoApps.OpenWeatherLib.Crosscutting.Extensions
 {
     public static class ObjectExtensions
     {

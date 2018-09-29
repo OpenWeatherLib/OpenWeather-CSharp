@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace Services
+namespace GuepardoApps.OpenWeatherLib.Services
 {
     public class AdapterModule : Module
     {
@@ -8,6 +8,10 @@ namespace Services
         {
             builder.RegisterAssemblyTypes(GetType().Assembly)
                 .Where(t => t.Name.EndsWith("Adapter"))
+                .AsImplementedInterfaces();
+
+            builder.RegisterAssemblyTypes(GetType().Assembly)
+                .Where(t => t.Name.EndsWith("Converter"))
                 .AsImplementedInterfaces();
         }
     }

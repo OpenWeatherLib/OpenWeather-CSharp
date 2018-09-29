@@ -1,13 +1,13 @@
-﻿using Services.DataScienceToolkit.Dto;
+﻿using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
 using System.Collections.Generic;
 
-namespace Services.OpenWeatherMap.Dto
+namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto
 {
     public class WeatherForecastDto
     {
         public string Cod { get; set; }
 
-        public int Message { get; set; }
+        public double Message { get; set; }
 
         public uint Count { get; set; }
 

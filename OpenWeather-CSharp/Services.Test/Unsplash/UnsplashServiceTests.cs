@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using Domain.Unsplash;
-using Domain.Unsplash.Enum;
+using GuepardoApps.OpenWeatherLib.Domain.Unsplash;
+using GuepardoApps.OpenWeatherLib.Domain.Unsplash.Enum;
 using FluentAssertions;
 using NSubstitute;
-using Services.Unsplash;
-using Services.Unsplash.Enum;
-using Services.Validation;
+using GuepardoApps.OpenWeatherLib.Services.Unsplash;
+using GuepardoApps.OpenWeatherLib.Services.Unsplash.Enum;
+using GuepardoApps.OpenWeatherLib.Services.Validation;
 using Xunit;
 
-namespace Services.Test.Unsplash
+namespace GuepardoApps.OpenWeatherLib.Services.Test.Unsplash
 {
     public class UnsplashServiceTests
     {

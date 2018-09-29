@@ -1,9 +1,9 @@
-﻿namespace Services.DataScienceToolkit.Dto
+﻿namespace GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto
 {
     public class CoordinatesDto
     {
-        public float Lat { get; set; }
+        public double Lat { get; set; }
 
-        public float Lon { get; set; }
+        public double Lon { get; set; }
     }
 }

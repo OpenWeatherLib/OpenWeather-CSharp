@@ -1,6 +1,6 @@
-﻿using Domain.Unsplash.Enum;
+﻿using GuepardoApps.OpenWeatherLib.Domain.Unsplash.Enum;
 
-namespace Domain.Unsplash
+namespace GuepardoApps.OpenWeatherLib.Domain.Unsplash
 {
     public interface IUnsplashAdapter
     {

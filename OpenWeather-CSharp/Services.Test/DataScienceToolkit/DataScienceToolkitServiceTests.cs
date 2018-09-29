@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
-using Domain.DataScienceToolkit;
-using Domain.DataScienceToolkit.Model;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
 using FluentAssertions;
 using NSubstitute;
-using Services.DataScienceToolkit;
-using Services.Validation;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
+using GuepardoApps.OpenWeatherLib.Services.Validation;
 using Xunit;
 
-namespace Services.Test.DataScienceToolkit
+namespace GuepardoApps.OpenWeatherLib.Services.Test.DataScienceToolkit
 {
     public class DataScienceToolkitServiceTests
     {
@@ -40,6 +41,7 @@ namespace Services.Test.DataScienceToolkit
         public void LoadCityData_ShouldReturnCity()
         {
             // Arrange
+            _mapper.Map<CityDto>(Arg.Any<City>()).Returns(new CityDto { Name = "Nuremberg", Coordinates = new CoordinatesDto { Lat = 35.3f, Lon = 45.0f } });
             _dataScienceToolkitAdapter.LoadCityData(Arg.Any<string>()).Returns(new City { Name = "Nuremberg", Coordinates = new Coordinates { Lat = 35.3f, Lon = 45.0f } });
             _sut = new DataScienceToolkitService(_mapper, _validationService, _dataScienceToolkitAdapter);
 

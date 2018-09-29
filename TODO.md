@@ -1,2 +1,2 @@
-[ ] build up architecture
-[ ] add same services like Angular/Android-project
+[X] build up architecture
+[X] add same services like Angular/Android-project

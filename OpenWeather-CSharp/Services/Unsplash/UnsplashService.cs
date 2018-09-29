@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using Domain.Unsplash;
-using Domain.Unsplash.Enum;
-using Services.Unsplash.Enum;
-using Services.Validation;
+using GuepardoApps.OpenWeatherLib.Domain.Unsplash;
+using GuepardoApps.OpenWeatherLib.Domain.Unsplash.Enum;
+using GuepardoApps.OpenWeatherLib.Services.Unsplash.Enum;
+using GuepardoApps.OpenWeatherLib.Services.Validation;
 
-namespace Services.Unsplash
+namespace GuepardoApps.OpenWeatherLib.Services.Unsplash
 {
     public class UnsplashService : IUnsplashService
     {

@@ -1,8 +1,8 @@
-﻿using Services.OpenWeatherMap.Enum;
+﻿using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Enum;
 using System;
 using System.Collections.Generic;
 
-namespace Services.OpenWeatherMap.Dto
+namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto
 {
     public class WeatherForecastPartDto
     {

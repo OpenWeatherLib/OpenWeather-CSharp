@@ -1,10 +1,10 @@
-﻿using Crosscutting.Attributes;
-using Crosscutting.Extensions;
+﻿using GuepardoApps.OpenWeatherLib.Crosscutting.Attributes;
+using GuepardoApps.OpenWeatherLib.Crosscutting.Extensions;
 using FluentAssertions;
 using System.Linq;
 using Xunit;
 
-namespace Crosscutting.Test.Extensions
+namespace GuepardoApps.OpenWeatherLib.Crosscutting.Test.Extensions
 {
     public class PropertyInfoExtensionsTests
     {

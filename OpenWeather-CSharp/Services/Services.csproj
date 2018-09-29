@@ -2,9 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>GuepardoApps.OpenWeatherLib.Services</RootNamespace>
+    <AssemblyName>GuepardoApps.OpenWeatherLib.Services</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.0" />
+    <PackageReference Include="AutofacSerilogIntegration" Version="2.0.0" />
     <PackageReference Include="AutoMapper" Version="7.0.1" />
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.6" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.1.3" />
@@ -14,11 +19,14 @@
   <ItemGroup>
     <Folder Include="DataScienceToolkit\Dto\" />
     <Folder Include="DataScienceToolkit\Enum\" />
-    <Folder Include="DataScienceToolkit\MappingProfile\" />
     <Folder Include="OpenWeatherMap\MappingProfile\" />
     <Folder Include="Unsplash\Dto\" />
     <Folder Include="Unsplash\Enum\" />
     <Folder Include="Unsplash\MappingProfile\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

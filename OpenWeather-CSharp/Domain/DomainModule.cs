@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace Services
+namespace GuepardoApps.OpenWeatherLib.Services
 {
     public class DomainModule : Module
     {

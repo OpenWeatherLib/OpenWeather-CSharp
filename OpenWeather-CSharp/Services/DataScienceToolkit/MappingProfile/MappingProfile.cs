@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Domain.DataScienceToolkit.Model;
-using Services.DataScienceToolkit.Dto;
+using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
+using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
 
-namespace Services.DataScienceToolkit.MappingProfile
+namespace GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.MappingProfile
 {
     public class MappingProfile : Profile
     {

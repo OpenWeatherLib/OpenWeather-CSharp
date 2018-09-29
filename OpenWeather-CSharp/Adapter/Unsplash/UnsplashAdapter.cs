@@ -1,28 +1,30 @@
-﻿using Domain.Unsplash;
-using Domain.Unsplash.Enum;
+﻿using GuepardoApps.OpenWeatherLib.Adapter.Unsplash.Converter;
+using GuepardoApps.OpenWeatherLib.Domain.Unsplash;
+using GuepardoApps.OpenWeatherLib.Domain.Unsplash.Enum;
 using System.Net;
 
-namespace Adapter.Unsplash
+namespace GuepardoApps.OpenWeatherLib.Adapter.Unsplash
 {
     public class UnsplashAdapter : IUnsplashAdapter
     {
-        private string imageApiUrl = "https://api.unsplash.com/search/photos?client_id={0}&orientation={1}&query={2}";
+        private const string ImageApiUrl = "https://api.unsplash.com/search/photos?client_id={0}&orientation={1}&query={2}";
 
-        private WebClient _webClient;
+        private readonly IJsonToUrlConverter _jsonToUrlConverter;
 
-        public UnsplashAdapter()
+        private readonly WebClient _webClient;
+
+        public UnsplashAdapter(IJsonToUrlConverter jsonToUrlConverter)
         {
+            _jsonToUrlConverter = jsonToUrlConverter;
+
             _webClient = new WebClient();
         }
 
         public string ReceiveImagePictureUrl(string clientId, string cityName, UnsplashImageOrientationEnum orientation)
         {
-            string url = string.Format(imageApiUrl, clientId, cityName, orientation.Description);
+            string url = string.Format(ImageApiUrl, clientId, cityName, orientation.Description);
             string response = _webClient.DownloadString(url);
-
-            // TODO Convert
-
-            return string.Empty;
+            return _jsonToUrlConverter.Convert(response);
         }
     }
 }
