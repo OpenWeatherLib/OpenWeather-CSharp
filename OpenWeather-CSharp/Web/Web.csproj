@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\DataScienceToolkit\Enum\" />
+    <Folder Include="Models\OpenWeatherMap\Enum\" />
+    <Folder Include="Models\OpenWeatherMap\MappingProfile\" />
+    <Folder Include="Models\Unsplash\Enum\" />
+    <Folder Include="Models\Unsplash\MappingProfile\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Services\Services.csproj" />
+  </ItemGroup>
+
+</Project>

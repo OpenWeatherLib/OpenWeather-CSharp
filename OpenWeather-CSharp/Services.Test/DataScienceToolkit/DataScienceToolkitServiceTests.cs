@@ -4,6 +4,7 @@ using Domain.DataScienceToolkit.Model;
 using FluentAssertions;
 using NSubstitute;
 using Services.DataScienceToolkit;
+using Services.DataScienceToolkit.Dto;
 using Services.Validation;
 using Xunit;
 
@@ -40,6 +41,7 @@ namespace Services.Test.DataScienceToolkit
         public void LoadCityData_ShouldReturnCity()
         {
             // Arrange
+            _mapper.Map<CityDto>(Arg.Any<City>()).Returns(new CityDto { Name = "Nuremberg", Coordinates = new CoordinatesDto { Lat = 35.3f, Lon = 45.0f } });
             _dataScienceToolkitAdapter.LoadCityData(Arg.Any<string>()).Returns(new City { Name = "Nuremberg", Coordinates = new Coordinates { Lat = 35.3f, Lon = 45.0f } });
             _sut = new DataScienceToolkitService(_mapper, _validationService, _dataScienceToolkitAdapter);
 

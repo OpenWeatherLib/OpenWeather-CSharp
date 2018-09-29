@@ -1,4 +1,5 @@
-﻿using Domain.Unsplash;
+﻿using Adapter.Unsplash.Converter;
+using Domain.Unsplash;
 using Domain.Unsplash.Enum;
 using System.Net;
 
@@ -8,10 +9,14 @@ namespace Adapter.Unsplash
     {
         private string imageApiUrl = "https://api.unsplash.com/search/photos?client_id={0}&orientation={1}&query={2}";
 
-        private WebClient _webClient;
+        private readonly IJsonToUrlConverter _jsonToUrlConverter;
 
-        public UnsplashAdapter()
+        private readonly WebClient _webClient;
+
+        public UnsplashAdapter(IJsonToUrlConverter jsonToUrlConverter)
         {
+            _jsonToUrlConverter = jsonToUrlConverter;
+
             _webClient = new WebClient();
         }
 
@@ -19,10 +24,7 @@ namespace Adapter.Unsplash
         {
             string url = string.Format(imageApiUrl, clientId, cityName, orientation.Description);
             string response = _webClient.DownloadString(url);
-
-            // TODO Convert
-
-            return string.Empty;
+            return _jsonToUrlConverter.Convert(response);
         }
     }
 }
