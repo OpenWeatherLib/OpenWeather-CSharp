@@ -2,7 +2,6 @@
 using FluentAssertions;
 using NSubstitute;
 using Serilog;
-using System;
 using Xunit;
 
 namespace Adapter.Test.OpenWeatherMap.Converter
@@ -65,13 +64,10 @@ namespace Adapter.Test.OpenWeatherMap.Converter
             actual.Wind.Speed.Should().Be(3.1);
             actual.Wind.Degree.Should().Be(90);
             actual.Clouds.All.Should().Be(40);
-            actual.Datetime.Should().Be(new DateTime(1527326400000));
             actual.Sys.Type.Should().Be(1);
             actual.Sys.Id.Should().Be(4888);
             actual.Sys.Message.Should().Be(0.0147);
             actual.Sys.Country.Should().Be("DE");
-            actual.Sys.Sunrise.Should().Be(new DateTime(1527304731000));
-            actual.Sys.Sunset.Should().Be(new DateTime(1527361642000));
             actual.Id.Should().Be(2861650);
             actual.Name.Should().Be("Nuremberg");
             actual.Cod.Should().Be(200);
