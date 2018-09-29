@@ -15,7 +15,6 @@
   <ItemGroup>
     <Folder Include="DataScienceToolkit\Dto\" />
     <Folder Include="DataScienceToolkit\Enum\" />
-    <Folder Include="DataScienceToolkit\MappingProfile\" />
     <Folder Include="OpenWeatherMap\MappingProfile\" />
     <Folder Include="Unsplash\Dto\" />
     <Folder Include="Unsplash\Enum\" />

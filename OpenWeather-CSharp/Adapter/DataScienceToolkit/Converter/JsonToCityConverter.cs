@@ -16,10 +16,10 @@ namespace Adapter.DataScienceToolkit.Converter
 
         public City Convert(string response)
         {
-            var city = new City();
-
             try
             {
+                var city = new City();
+
                 JObject jsonObject = JObject.Parse(response);
 
                 JToken cityNameJObject = jsonObject.GetValue("address_components")[0];
@@ -35,13 +35,15 @@ namespace Adapter.DataScienceToolkit.Converter
                 var lng = System.Convert.ToDouble(locationJObject["lng"].ToString());
 
                 city.Coordinates = new Coordinates { Lat = lat, Lon = lng };
+
+                return city;
             }
             catch (Exception exception)
             {
                 _logger.Error(exception.Message);
             }
 
-            return city;
+            return null;
         }
     }
 }

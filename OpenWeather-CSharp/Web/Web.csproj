@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Models\DataScienceToolkit\Enum\" />
-    <Folder Include="Models\OpenWeatherMap\Enum\" />
-    <Folder Include="Models\OpenWeatherMap\MappingProfile\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

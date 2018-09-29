@@ -1,6 +1,6 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Domain.DataScienceToolkit.Model;
+using Domain.OpenWeatherMap;
 using Services.DataScienceToolkit.Dto;
 using Services.OpenWeatherMap.Dto;
 using Services.Validation;
@@ -13,24 +13,16 @@ namespace Services.OpenWeatherMap
 
         private readonly IValidationService _validationService;
 
-        public OpenWeatherMapService(IMapper mapper, IValidationService validationService)
+        private readonly IOpenWeatherMapAdapter _openWeatherMapAdapter;
+
+        public OpenWeatherMapService(
+            IMapper mapper,
+            IValidationService validationService,
+            IOpenWeatherMapAdapter openWeatherMapAdapter)
         {
             _mapper = mapper;
             _validationService = validationService;
-        }
-
-        public UvIndexDto LoadUvIndex(CityDto cityDto)
-        {
-            var city = _mapper.Map<City>(cityDto);
-
-            if (!_validationService.Validate(city))
-            {
-                return null;
-            }
-
-            // TODO
-
-            throw new NotImplementedException();
+            _openWeatherMapAdapter = openWeatherMapAdapter;
         }
 
         public WeatherCurrentDto LoadWeatherCurrent(CityDto cityDto)
@@ -42,9 +34,9 @@ namespace Services.OpenWeatherMap
                 return null;
             }
 
-            // TODO
+            var weatherCurrent = _openWeatherMapAdapter.LoadWeatherCurrent(city);
 
-            throw new NotImplementedException();
+            return _mapper.Map<WeatherCurrentDto>(weatherCurrent);
         }
 
         public WeatherForecastDto LoadWeatherForecast(CityDto cityDto)
@@ -56,9 +48,23 @@ namespace Services.OpenWeatherMap
                 return null;
             }
 
-            // TODO
+            var weatherForecast = _openWeatherMapAdapter.LoadWeatherForecast(city);
 
-            throw new NotImplementedException();
+            return _mapper.Map<WeatherForecastDto>(weatherForecast);
+        }
+
+        public UvIndexDto LoadUvIndex(CityDto cityDto)
+        {
+            var city = _mapper.Map<City>(cityDto);
+
+            if (!_validationService.Validate(city))
+            {
+                return null;
+            }
+
+            var uvIndex = _openWeatherMapAdapter.LoadUvIndex(city);
+
+            return _mapper.Map<UvIndexDto>(uvIndex);
         }
     }
 }

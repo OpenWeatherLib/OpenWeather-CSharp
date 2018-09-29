@@ -16,7 +16,6 @@
     <Folder Include="DataScienceToolkit\Model\" />
     <Folder Include="DataScienceToolkit\Enum\" />
     <Folder Include="DataScienceToolkit\MappingProfile\" />
-    <Folder Include="OpenWeatherMap\Enum\" />
     <Folder Include="OpenWeatherMap\MappingProfile\" />
     <Folder Include="Unsplash\Enum\" />
     <Folder Include="Unsplash\MappingProfile\" />
