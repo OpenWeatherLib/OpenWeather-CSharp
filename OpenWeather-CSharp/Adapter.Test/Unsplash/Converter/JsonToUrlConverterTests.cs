@@ -4,7 +4,7 @@ using NSubstitute;
 using Serilog;
 using Xunit;
 
-namespace Adapter.Test.DataScienceToolkit.Converter
+namespace Adapter.Test.Unsplash.Converter
 {
     public class JsonToUrlConverterTests
     {

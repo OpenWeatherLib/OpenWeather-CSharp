@@ -30,7 +30,6 @@
 
   <ItemGroup>
     <Folder Include="OpenWeatherMap\Converter\" />
-    <Folder Include="Unsplash\Converter\" />
   </ItemGroup>
 
   <ItemGroup>

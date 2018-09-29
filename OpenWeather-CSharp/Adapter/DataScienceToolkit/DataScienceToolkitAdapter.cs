@@ -1,4 +1,5 @@
-﻿using Domain.DataScienceToolkit;
+﻿using Adapter.DataScienceToolkit.Converter;
+using Domain.DataScienceToolkit;
 using Domain.DataScienceToolkit.Model;
 using System.Net;
 
@@ -8,10 +9,14 @@ namespace Adapter.DataScienceToolkit
     {
         private const string geoCodeForCityUrl = "http://www.datasciencetoolkit.org/maps/api/geocode/json?address={0}";
 
+        private readonly IJsonToCityConverter _jsonToCityConverter;
+
         private WebClient _webClient;
 
-        public DataScienceToolkitAdapter()
+        public DataScienceToolkitAdapter(IJsonToCityConverter jsonToCityConverter)
         {
+            _jsonToCityConverter = jsonToCityConverter;
+
             _webClient = new WebClient();
         }
 
@@ -19,10 +24,7 @@ namespace Adapter.DataScienceToolkit
         {
             string url = string.Format(geoCodeForCityUrl, cityName);
             string response = _webClient.DownloadString(url);
-
-            // TODO Convert
-
-            return null;
+            return _jsonToCityConverter.Convert(response);
         }
     }
 }

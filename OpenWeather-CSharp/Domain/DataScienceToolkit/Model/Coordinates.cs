@@ -4,10 +4,10 @@ namespace Domain.DataScienceToolkit.Model
 {
     public class Coordinates
     {
-        [IsNotDefault(typeof(float), 720.0)]
-        public float Lat { get; set; }
+        [IsNotDefault(typeof(double), 720.0)]
+        public double Lat { get; set; }
 
-        [IsNotDefault(typeof(float), 720.0)]
-        public float Lon { get; set; }
+        [IsNotDefault(typeof(double), 720.0)]
+        public double Lon { get; set; }
     }
 }
