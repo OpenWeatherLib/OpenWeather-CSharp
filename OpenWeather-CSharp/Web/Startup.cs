@@ -40,11 +40,10 @@ namespace GuepardoApps.OpenWeatherLib.Web
         /// <param name="services">services</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
             services.Configure<IISOptions>(options => { options.AutomaticAuthentication = false; });
             services.AddMemoryCache();
             services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore)
                 .AddControllersAsServices();
 
