@@ -9,3 +9,7 @@
 [![Version](https://img.shields.io/badge/version-v1.0.0.180929-green.svg)](https://github.com/OpenWeatherLib/OpenWeather-CSharp/tree/master/)
 
 library for downloading and handling data from openweather
+
+## License
+
+OpenWeather-C# is distributed under the MIT license. [See LICENSE](https://github.com/OpenWeatherLib/OpenWeather-CSharp/blob/develop/LICENSE.md) for details.
