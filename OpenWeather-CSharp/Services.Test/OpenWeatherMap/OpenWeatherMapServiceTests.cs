@@ -9,6 +9,7 @@ using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap;
 using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto;
 using GuepardoApps.OpenWeatherLib.Services.Validation;
 using Xunit;
+using System;
 
 namespace GuepardoApps.OpenWeatherLib.Services.Test.OpenWeatherMap
 {
@@ -27,6 +28,74 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.OpenWeatherMap
             _openWeatherMapAdapter = Substitute.For<IOpenWeatherMapAdapter>();
 
             _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+        }
+
+        [Fact]
+        public void LoadCarbonMonoxide_ShouldReturnWeatherCurrent()
+        {
+            // Arrange
+            _mapper.Map<City>(Arg.Any<CityDto>()).Returns(new City());
+            _openWeatherMapAdapter.LoadCarbonMonoxide(Arg.Any<string>(), Arg.Any<City>(), Arg.Any<DateTime>(), Arg.Any<int>()).Returns(new CarbonMonoxide());
+            _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
+            _mapper.Map<CarbonMonoxideDto>(Arg.Any<CarbonMonoxide>()).Returns(new CarbonMonoxideDto());
+            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+
+            // Act
+            var actual = _sut.LoadCarbonMonoxide(new CityDto(), DateTime.Now, 1);
+
+            // Assert
+            actual.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void LoadNitrogenDioxide_ShouldReturnWeatherCurrent()
+        {
+            // Arrange
+            _mapper.Map<City>(Arg.Any<CityDto>()).Returns(new City());
+            _openWeatherMapAdapter.LoadNitrogenDioxide(Arg.Any<string>(), Arg.Any<City>(), Arg.Any<DateTime>(), Arg.Any<int>()).Returns(new NitrogenDioxide());
+            _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
+            _mapper.Map<NitrogenDioxideDto>(Arg.Any<NitrogenDioxide>()).Returns(new NitrogenDioxideDto());
+            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+
+            // Act
+            var actual = _sut.LoadNitrogenDioxide(new CityDto(), DateTime.Now, 1);
+
+            // Assert
+            actual.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void LoadOzone_ShouldReturnWeatherCurrent()
+        {
+            // Arrange
+            _mapper.Map<City>(Arg.Any<CityDto>()).Returns(new City());
+            _openWeatherMapAdapter.LoadOzone(Arg.Any<string>(), Arg.Any<City>(), Arg.Any<DateTime>(), Arg.Any<int>()).Returns(new Ozone());
+            _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
+            _mapper.Map<OzoneDto>(Arg.Any<Ozone>()).Returns(new OzoneDto());
+            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+
+            // Act
+            var actual = _sut.LoadOzone(new CityDto(), DateTime.Now, 1);
+
+            // Assert
+            actual.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void LoadSulfurDioxide_ShouldReturnWeatherCurrent()
+        {
+            // Arrange
+            _mapper.Map<City>(Arg.Any<CityDto>()).Returns(new City());
+            _openWeatherMapAdapter.LoadSulfurDioxide(Arg.Any<string>(), Arg.Any<City>(), Arg.Any<DateTime>(), Arg.Any<int>()).Returns(new SulfurDioxide());
+            _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
+            _mapper.Map<SulfurDioxideDto>(Arg.Any<SulfurDioxide>()).Returns(new SulfurDioxideDto());
+            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+
+            // Act
+            var actual = _sut.LoadSulfurDioxide(new CityDto(), DateTime.Now, 1);
+
+            // Assert
+            actual.Should().NotBeNull();
         }
 
         [Fact]
