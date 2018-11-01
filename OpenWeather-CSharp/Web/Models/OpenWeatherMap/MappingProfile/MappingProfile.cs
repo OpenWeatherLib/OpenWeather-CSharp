@@ -18,35 +18,51 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.MappingProfile
         /// </summary>
         public MappingProfile()
         {
+            CreateMap<CarbonMonoxideDto, CarbonMonoxideViewModel>();
+
+            CreateMap<CarbonMonoxideDataDto, CarbonMonoxideDataViewModel>();
+
             CreateMap<CityViewModel, CityDto>();
 
             CreateMap<CityDto, CityViewModel>();
+
+            CreateMap<CloudsDto, CloudsViewModel>();
 
             CreateMap<CoordinatesViewModel, CoordinatesDto>();
 
             CreateMap<CoordinatesDto, CoordinatesViewModel>();
 
-            CreateMap<UvIndexDto, UvIndexViewModel>();
-
-            CreateMap<WeatherCurrentDto, WeatherCurrentViewModel>();
-
-            CreateMap<WeatherPartDto, WeatherPartViewModel>();
-
             CreateMap<MainDto, MainViewModel>();
 
-            CreateMap<WindDto, WindViewModel>();
+            CreateMap<NitrogenDioxideDto, NitrogenDioxideViewModel>();
 
-            CreateMap<CloudsDto, CloudsViewModel>();
+            CreateMap<NitrogenDioxideDataDto, NitrogenDioxideDataViewModel>();
+
+            CreateMap<NitrogenDioxideDataHolderDto, NitrogenDioxideDataHolderViewModel>();
+
+            CreateMap<OzoneDto, OzoneViewModel>();
+
+            CreateMap<RainDto, RainViewModel>();
+
+            CreateMap<SulfurDioxideDto, SulfurDioxideViewModel>();
+
+            CreateMap<SulfurDioxideDataDto, SulfurDioxideDataViewModel>();
 
             CreateMap<SysDto, SysViewModel>();
 
+            CreateMap<UvIndexDto, UvIndexViewModel>();
+
             CreateMap<WeatherConditionDtoEnum, WeatherConditionViewModelEnum>();
+
+            CreateMap<WeatherCurrentDto, WeatherCurrentViewModel>();
 
             CreateMap<WeatherForecastDto, WeatherForecastViewModel>();
 
             CreateMap<WeatherForecastPartDto, WeatherForecastPartViewModel>();
 
-            CreateMap<RainDto, RainViewModel>();
+            CreateMap<WeatherPartDto, WeatherPartViewModel>();
+
+            CreateMap<WindDto, WindViewModel>();
         }
     }
 }

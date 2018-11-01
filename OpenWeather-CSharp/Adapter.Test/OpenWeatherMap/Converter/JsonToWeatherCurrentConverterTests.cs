@@ -62,7 +62,6 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.Test.OpenWeatherMap.Converter
             actual.Main.TemperatureMax.Should().Be(23);
             actual.Visibility.Should().Be(10000);
             actual.Wind.Speed.Should().Be(3.1);
-            actual.Wind.Degree.Should().Be(90);
             actual.Clouds.All.Should().Be(40);
             actual.Sys.Type.Should().Be(1);
             actual.Sys.Id.Should().Be(4888);

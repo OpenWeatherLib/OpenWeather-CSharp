@@ -3,7 +3,5 @@
     public class WindDto
     {
         public double Speed { get; set; }
-
-        public double Degree { get; set; }
     }
 }

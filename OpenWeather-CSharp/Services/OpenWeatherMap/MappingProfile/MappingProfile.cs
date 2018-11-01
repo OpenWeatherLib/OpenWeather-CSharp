@@ -12,35 +12,51 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.MappingProfile
     {
         public MappingProfile()
         {
+            CreateMap<CarbonMonoxide, CarbonMonoxideDto>();
+
+            CreateMap<CarbonMonoxideData, CarbonMonoxideDataDto>();
+
             CreateMap<CityDto, City>();
 
             CreateMap<City, CityDto>();
+
+            CreateMap<Clouds, CloudsDto>();
 
             CreateMap<CoordinatesDto, Coordinates>();
 
             CreateMap<Coordinates, CoordinatesDto>();
 
-            CreateMap<UvIndex, UvIndexDto>();
-
-            CreateMap<WeatherCurrent, WeatherCurrentDto>();
-
-            CreateMap<WeatherPart, WeatherPartDto>();
-
             CreateMap<Main, MainDto>();
 
-            CreateMap<Wind, WindDto>();
+            CreateMap<NitrogenDioxide, NitrogenDioxideDto>();
 
-            CreateMap<Clouds, CloudsDto>();
+            CreateMap<NitrogenDioxideData, NitrogenDioxideDataDto>();
+
+            CreateMap<NitrogenDioxideDataHolder, NitrogenDioxideDataHolderDto>();
+
+            CreateMap<Ozone, OzoneDto>();
+
+            CreateMap<Rain, RainDto>();
+
+            CreateMap<SulfurDioxide, SulfurDioxideDto>();
+
+            CreateMap<SulfurDioxideData, SulfurDioxideDataDto>();
 
             CreateMap<Sys, SysDto>();
 
+            CreateMap<UvIndex, UvIndexDto>();
+
             CreateMap<WeatherConditionEnum, WeatherConditionDtoEnum>();
+
+            CreateMap<WeatherCurrent, WeatherCurrentDto>();
 
             CreateMap<WeatherForecast, WeatherForecastDto>();
 
             CreateMap<WeatherForecastPart, WeatherForecastPartDto>();
 
-            CreateMap<Rain, RainDto>();
+            CreateMap<WeatherPart, WeatherPartDto>();
+
+            CreateMap<Wind, WindDto>();
         }
     }
 }

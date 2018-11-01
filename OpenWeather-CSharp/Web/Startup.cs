@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 using GuepardoApps.OpenWeatherLib.Crosscutting.Helper;
 using System.Diagnostics.CodeAnalysis;
+using AutoMapper;
 
 namespace GuepardoApps.OpenWeatherLib.Web
 {
@@ -42,6 +43,7 @@ namespace GuepardoApps.OpenWeatherLib.Web
         {
             services.Configure<IISOptions>(options => { options.AutomaticAuthentication = false; });
             services.AddMemoryCache();
+            services.AddAutoMapper();
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore)

@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
 using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap;
 using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
@@ -26,6 +27,62 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
             _mapper = mapper;
             _validationService = validationService;
             _openWeatherMapAdapter = openWeatherMapAdapter;
+        }
+
+        public CarbonMonoxideDto LoadCarbonMonoxide(CityDto cityDto, DateTime dateTime, int accuracy)
+        {
+            var city = _mapper.Map<City>(cityDto);
+
+            if (!_validationService.Validate(city))
+            {
+                return null;
+            }
+
+            var carbonMonoxide = _openWeatherMapAdapter.LoadCarbonMonoxide(_apiKey, city, dateTime, accuracy);
+
+            return _mapper.Map<CarbonMonoxideDto>(carbonMonoxide);
+        }
+
+        public NitrogenDioxideDto LoadNitrogenDioxide(CityDto cityDto, DateTime dateTime, int accuracy)
+        {
+            var city = _mapper.Map<City>(cityDto);
+
+            if (!_validationService.Validate(city))
+            {
+                return null;
+            }
+
+            var nitrogenDioxide = _openWeatherMapAdapter.LoadNitrogenDioxide(_apiKey, city, dateTime, accuracy);
+
+            return _mapper.Map<NitrogenDioxideDto>(nitrogenDioxide);
+        }
+
+        public OzoneDto LoadOzone(CityDto cityDto, DateTime dateTime, int accuracy)
+        {
+            var city = _mapper.Map<City>(cityDto);
+
+            if (!_validationService.Validate(city))
+            {
+                return null;
+            }
+
+            var ozone = _openWeatherMapAdapter.LoadOzone(_apiKey, city, dateTime, accuracy);
+
+            return _mapper.Map<OzoneDto>(ozone);
+        }
+
+        public SulfurDioxideDto LoadSulfurDioxide(CityDto cityDto, DateTime dateTime, int accuracy)
+        {
+            var city = _mapper.Map<City>(cityDto);
+
+            if (!_validationService.Validate(city))
+            {
+                return null;
+            }
+
+            var sulfurDioxide = _openWeatherMapAdapter.LoadSulfurDioxide(_apiKey, city, dateTime, accuracy);
+
+            return _mapper.Map<SulfurDioxideDto>(sulfurDioxide);
         }
 
         public WeatherCurrentDto LoadWeatherCurrent(CityDto cityDto)

@@ -9,10 +9,5 @@
         /// Speed
         /// </summary>
         public double Speed { get; set; }
-
-        /// <summary>
-        /// Degree
-        /// </summary>
-        public double Degree { get; set; }
     }
 }

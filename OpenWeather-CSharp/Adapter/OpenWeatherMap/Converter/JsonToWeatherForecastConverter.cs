@@ -80,7 +80,6 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
                     var wind = new Wind();
                     JToken windJsonObject = weatherForecastJsonObject["wind"];
                     wind.Speed = System.Convert.ToDouble(windJsonObject["speed"].ToString());
-                    wind.Degree = System.Convert.ToDouble(windJsonObject["deg"].ToString());
                     weatherForecastPart.Wind = wind;
 
                     var rain = new Rain();
