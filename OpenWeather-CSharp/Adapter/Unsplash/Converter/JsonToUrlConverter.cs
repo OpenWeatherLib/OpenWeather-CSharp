@@ -19,9 +19,10 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.Unsplash.Converter
 
             try
             {
-                JObject jsonObject = JObject.Parse(response);
-                JToken resultJObject = jsonObject.GetValue("results")[0];
-                JToken urlsJObject = resultJObject["urls"];
+                var jsonObject = JObject.Parse(response);
+                var resultJObject = jsonObject["results"][0];
+                var urlsJObject = resultJObject["urls"];
+
                 url = urlsJObject["small"].ToString();
             }
             catch (Exception exception)

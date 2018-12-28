@@ -1,17 +1,16 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Reflection;
+using Autofac;
+using GuepardoApps.OpenWeatherLib.Crosscutting.Helper;
+using GuepardoApps.OpenWeatherLib.Web.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.IO;
-using Swashbuckle.AspNetCore.Swagger;
-using System.Reflection;
-using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using Microsoft.AspNetCore.Mvc;
-using GuepardoApps.OpenWeatherLib.Crosscutting.Helper;
-using System.Diagnostics.CodeAnalysis;
-using AutoMapper;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace GuepardoApps.OpenWeatherLib.Web
 {
@@ -25,15 +24,22 @@ namespace GuepardoApps.OpenWeatherLib.Web
         /// Startup
         /// </summary>
         /// <param name="configuration">configuration</param>
-        public Startup(IConfiguration configuration)
+        /// <param name="hostingEnvironment">hostingEnvironment</param>
+        public Startup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
         {
             Configuration = configuration;
+            HostingEnvironment = hostingEnvironment;
         }
 
         /// <summary>
         /// Configuration
         /// </summary>
         public IConfiguration Configuration { get; }
+
+        /// <summary>
+        /// HostingEnvironment
+        /// </summary>
+        public IHostingEnvironment HostingEnvironment { get; }
 
         /// <summary>
         /// ConfigureServices
@@ -43,11 +49,14 @@ namespace GuepardoApps.OpenWeatherLib.Web
         {
             services.Configure<IISOptions>(options => { options.AutomaticAuthentication = false; });
             services.AddMemoryCache();
-            services.AddAutoMapper();
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore)
                 .AddControllersAsServices();
+
+            if (HostingEnvironment.IsDevelopment())
+            {
+                services.AddCors();
+            }
 
             services.AddSwaggerGen(swaggerGenOptions =>
             {
@@ -66,35 +75,39 @@ namespace GuepardoApps.OpenWeatherLib.Web
         }
 
         /// <summary>
+        /// ConfigureContainer
+        /// </summary>
+        /// <param name="builder">ContainerBuilder</param>
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterAssemblyModules(AssemblyHelper.GetAssemblies("GuepardoApps.OpenWeatherLib").ToArray());
+        }
+
+        /// <summary>
         /// Configure
         /// </summary>
         /// <param name="app">app</param>
         /// <param name="env">env</param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseExceptionHandler(builder => builder.UseMiddleware<GlobalExceptionHandlerMiddleware>());
+
             if (env.IsDevelopment())
             {
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();
-            app.UseMvc();
-
-            app.Use(async (context, next) =>
-            {
-                await next();
-                if (context.Response.StatusCode == StatusCodes.Status404NotFound &&
-                    !Path.HasExtension(context.Request.Path.Value) &&
-                    !context.Request.Path.Value.StartsWith("/api/"))
+                app.UseCors(builder =>
                 {
-                    context.Request.Path = "/index.html";
-                    await next();
-                }
-            });
+                    builder.AllowAnyHeader();
+                    builder.AllowAnyMethod();
+                    builder.AllowCredentials();
+                });
+
+                app.UseDeveloperExceptionPage();
+            }
 
             app.UseMvcWithDefaultRoute();
             app.UseDefaultFiles();
             app.UseStaticFiles();
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {

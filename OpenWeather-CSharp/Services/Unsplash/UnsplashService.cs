@@ -14,8 +14,8 @@ namespace GuepardoApps.OpenWeatherLib.Services.Unsplash
 
         private readonly IUnsplashAdapter _unsplashAdapter;
 
-        // TODO
-        private readonly string _clientId = "TODO_READ_OUT_CONFIG";
+        // TODO Use a config file
+        private readonly string _clientId = "TODO Use a config file";
 
         public UnsplashService(
             IMapper mapper,

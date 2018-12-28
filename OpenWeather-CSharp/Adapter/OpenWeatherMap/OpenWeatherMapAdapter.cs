@@ -4,11 +4,10 @@ using GuepardoApps.OpenWeatherLib.Domain.DataScienceToolkit.Model;
 using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap;
 using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap.Model;
 using System;
-using System.Net;
 
 namespace GuepardoApps.OpenWeatherLib.Adapter.DataScienceToolkit
 {
-    public class OpenWeatherMapAdapter : IOpenWeatherMapAdapter
+    public class OpenWeatherMapAdapter : BaseAdapter, IOpenWeatherMapAdapter
     {
         private const string CurrentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q={0}&units=metric&APPID={1}";
         private const string ForecastWeatherUrl = "http://api.openweathermap.org/data/2.5/forecast?q={0}&units=metric&APPID={1}";
@@ -30,8 +29,6 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.DataScienceToolkit
         private readonly IJsonToWeatherCurrentConverter _jsonToWeatherCurrentConverter;
         private readonly IJsonToWeatherForecastConverter _jsonToWeatherForecastConverter;
 
-        private WebClient _webClient;
-
         public OpenWeatherMapAdapter(
             IJsonToCarbonMonoxideConverter jsonToCarbonMonoxideConverter,
             IJsonToNitrogenDioxideConverter jsonToNitrogenDioxideConverter,
@@ -48,56 +45,54 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.DataScienceToolkit
             _jsonToUvIndexConverter = jsonToUvIndexConverter;
             _jsonToWeatherCurrentConverter = jsonToWeatherCurrentConverter;
             _jsonToWeatherForecastConverter = jsonToWeatherForecastConverter;
-
-            _webClient = new WebClient();
         }
 
         public CarbonMonoxide LoadCarbonMonoxide(string apiKey, City city, DateTime dateTime, int accuracy)
         {
-            string url = string.Format(AirPollutionUrl, Co, $"{city.Coordinates.Lat.ToFixed(accuracy)}, {city.Coordinates.Lon.ToFixed(accuracy)}", dateTime.ToLongTimeString(), apiKey);
-            string response = _webClient.DownloadString(url);
+            var url = string.Format(AirPollutionUrl, Co, $"{city.Coordinates.Lat.ToFixed(accuracy)}, {city.Coordinates.Lon.ToFixed(accuracy)}", dateTime.ToLongTimeString(), apiKey);
+            var response = CleanResponse(GetRequest(url));
             return _jsonToCarbonMonoxideConverter.Convert(response);
         }
 
         public NitrogenDioxide LoadNitrogenDioxide(string apiKey, City city, DateTime dateTime, int accuracy)
         {
-            string url = string.Format(AirPollutionUrl, No2, $"{city.Coordinates.Lat.ToFixed(accuracy)}, {city.Coordinates.Lon.ToFixed(accuracy)}", dateTime.ToLongTimeString(), apiKey);
-            string response = _webClient.DownloadString(url);
+            var url = string.Format(AirPollutionUrl, No2, $"{city.Coordinates.Lat.ToFixed(accuracy)}, {city.Coordinates.Lon.ToFixed(accuracy)}", dateTime.ToLongTimeString(), apiKey);
+            var response = CleanResponse(GetRequest(url));
             return _jsonToNitrogenDioxideConverter.Convert(response);
         }
 
         public Ozone LoadOzone(string apiKey, City city, DateTime dateTime, int accuracy)
         {
-            string url = string.Format(AirPollutionUrl, O3, $"{city.Coordinates.Lat.ToFixed(accuracy)}, {city.Coordinates.Lon.ToFixed(accuracy)}", dateTime.ToLongTimeString(), apiKey);
-            string response = _webClient.DownloadString(url);
+            var url = string.Format(AirPollutionUrl, O3, $"{city.Coordinates.Lat.ToFixed(accuracy)}, {city.Coordinates.Lon.ToFixed(accuracy)}", dateTime.ToLongTimeString(), apiKey);
+            var response = CleanResponse(GetRequest(url));
             return _jsonToOzoneConverter.Convert(response);
         }
 
         public SulfurDioxide LoadSulfurDioxide(string apiKey, City city, DateTime dateTime, int accuracy)
         {
-            string url = string.Format(AirPollutionUrl, So2, $"{city.Coordinates.Lat.ToFixed(accuracy)}, {city.Coordinates.Lon.ToFixed(accuracy)}", dateTime.ToLongTimeString(), apiKey);
-            string response = _webClient.DownloadString(url);
+            var url = string.Format(AirPollutionUrl, So2, $"{city.Coordinates.Lat.ToFixed(accuracy)}, {city.Coordinates.Lon.ToFixed(accuracy)}", dateTime.ToLongTimeString(), apiKey);
+            var response = CleanResponse(GetRequest(url));
             return _jsonToSulfurDioxideConverter.Convert(response);
         }
 
         public UvIndex LoadUvIndex(string apiKey, City city)
         {
-            string url = string.Format(UvIndexUrl, city.Coordinates.Lat, city.Coordinates.Lon, apiKey);
-            string response = _webClient.DownloadString(url);
+            var url = string.Format(UvIndexUrl, city.Coordinates.Lat, city.Coordinates.Lon, apiKey);
+            var response = CleanResponse(GetRequest(url));
             return _jsonToUvIndexConverter.Convert(response);
         }
 
         public WeatherCurrent LoadWeatherCurrent(string apiKey, City city)
         {
-            string url = string.Format(CurrentWeatherUrl, city.Name, apiKey);
-            string response = _webClient.DownloadString(url);
+            var url = string.Format(CurrentWeatherUrl, city.Name, apiKey);
+            var response = CleanResponse(GetRequest(url));
             return _jsonToWeatherCurrentConverter.Convert(response);
         }
 
         public WeatherForecast LoadWeatherForecast(string apiKey, City city)
         {
-            string url = string.Format(ForecastWeatherUrl, city.Name, apiKey);
-            string response = _webClient.DownloadString(url);
+            var url = string.Format(ForecastWeatherUrl, city.Name, apiKey);
+            var response = CleanResponse(GetRequest(url));
             return _jsonToWeatherForecastConverter.Convert(response);
         }
     }

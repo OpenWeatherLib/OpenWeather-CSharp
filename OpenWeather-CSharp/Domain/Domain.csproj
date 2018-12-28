@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <AssemblyName>GuepardoApps.OpenWeatherLib.Domain</AssemblyName>
     <RootNamespace>GuepardoApps.OpenWeatherLib.Domain</RootNamespace>
     <PackageLicenseUrl>https://github.com/OpenWeatherLib/OpenWeather-CSharp/blob/master/LICENSE.md</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/OpenWeatherLib/OpenWeather-CSharp/</RepositoryUrl>
     <PackageProjectUrl>https://github.com/OpenWeatherLib/</PackageProjectUrl>
     <RepositoryType>GIT</RepositoryType>
-    <Version>0.5.0.0</Version>
+    <Version>0.5.0.1</Version>
     <Authors>Jonas Schubert</Authors>
     <Company>GuepardoApps</Company>
     <Product>OpenWeatherLib</Product>
@@ -16,12 +16,12 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
     <PackageReference Include="AutofacSerilogIntegration" Version="2.0.0" />
-    <PackageReference Include="AutoMapper" Version="7.0.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
-    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.6" />
-    <PackageReference Include="Microsoft.AspNetCore" Version="2.1.4" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Serilog" Version="2.7.1" />
   </ItemGroup>
 
