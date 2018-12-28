@@ -16,34 +16,42 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.DataScienceToolkit.Converter
 
         public City Convert(string response)
         {
+            var name = string.Empty;
+            var country = string.Empty;
+            var lat = 0.0;
+            var lng = 0.0;
+
             try
             {
-                var city = new City();
+                var jsonObject = JObject.Parse(response)["results"][0];
 
-                JObject jsonObject = JObject.Parse(response);
+                var cityNameJObject = jsonObject["address_components"][0];
+                name = cityNameJObject["short_name"].ToString();
 
-                JToken cityNameJObject = jsonObject.GetValue("address_components")[0];
-                city.Name = cityNameJObject["short_name"].ToString();
+                var countryNameJObject = jsonObject["address_components"][1];
+                country = countryNameJObject["short_name"].ToString();
 
-                JToken countryNameJObject = jsonObject.GetValue("address_components")[1];
-                city.Country = countryNameJObject["short_name"].ToString();
-
-                JToken geometryJObject = jsonObject["geometry"];
-                JToken locationJObject = geometryJObject["location"];
-
-                var lat = System.Convert.ToDouble(locationJObject["lat"].ToString());
-                var lng = System.Convert.ToDouble(locationJObject["lng"].ToString());
-
-                city.Coordinates = new Coordinates { Lat = lat, Lon = lng };
-
-                return city;
+                var locationJObject = jsonObject["geometry"]["location"];
+                lat = System.Convert.ToDouble(locationJObject["lat"].ToString());
+                lng = System.Convert.ToDouble(locationJObject["lng"].ToString());
             }
             catch (Exception exception)
             {
                 _logger.Error(exception.Message);
             }
 
-            return null;
+            return new City
+            {
+                Id = 0,
+                Name = name,
+                Country = country,
+                Population = 0,
+                Coordinates = new Coordinates
+                {
+                    Lat = lat,
+                    Lon = lng
+                }
+            };
         }
     }
 }

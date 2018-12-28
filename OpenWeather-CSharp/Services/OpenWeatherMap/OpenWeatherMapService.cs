@@ -16,8 +16,8 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
 
         private readonly IOpenWeatherMapAdapter _openWeatherMapAdapter;
 
-        // TODO
-        private readonly string _apiKey = "TODO_READ_OUT_CONFIG";
+        // TODO Use a config file
+        private readonly string _apiKey = "TODO Use a config file";
 
         public OpenWeatherMapService(
             IMapper mapper,
