@@ -12,4 +12,4 @@ library for downloading and handling data from openweather
 
 ## License
 
-OpenWeather-C# is distributed under the MIT license. [See LICENSE](https://github.com/OpenWeatherLib/OpenWeather-CSharp/blob/develop/LICENSE.md) for details.
+OpenWeather-C# is distributed under the MIT license. [See LICENSE](LICENSE.md) for details.
