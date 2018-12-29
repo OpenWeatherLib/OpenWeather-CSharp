@@ -18,21 +18,21 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
 
         public CarbonMonoxide Convert(string response)
         {
+            var carbonMonoxide = new CarbonMonoxide();
+
             try
             {
-                var carbonMonoxide = new CarbonMonoxide();
+                var jsonObject = JObject.Parse(response);
 
-                JObject jsonObject = JObject.Parse(response);
+                carbonMonoxide.DateTime = System.Convert.ToDateTime(jsonObject["time"].ToString());
 
-                var lat = System.Convert.ToDouble(jsonObject["latitude"].ToString());
-                var lon = System.Convert.ToDouble(jsonObject["longitude"].ToString());
+                var lat = System.Convert.ToDouble(jsonObject["location"]["latitude"].ToString());
+                var lon = System.Convert.ToDouble(jsonObject["location"]["longitude"].ToString());
                 carbonMonoxide.Coordinates = new Coordinates { Lat = lat, Lon = lon };
-
-                carbonMonoxide.DateTime = System.Convert.ToDateTime(jsonObject["dateTime"].ToString());
-
+                
                 var data = new List<CarbonMonoxideData>();
-                JToken dataListJsonObject = jsonObject.GetValue("data");
-                foreach (JToken dataJsonObject in dataListJsonObject)
+                var dataListJsonObject = jsonObject["data"];
+                foreach (var dataJsonObject in dataListJsonObject)
                 {
                     var carbonMonoxideData = new CarbonMonoxideData
                     {
@@ -43,15 +43,13 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
                     data.Add(carbonMonoxideData);
                 }
                 carbonMonoxide.Data = data;
-
-                return carbonMonoxide;
             }
             catch (Exception exception)
             {
                 _logger.Error(exception.Message);
             }
 
-            return null;
+            return carbonMonoxide;
         }
     }
 }

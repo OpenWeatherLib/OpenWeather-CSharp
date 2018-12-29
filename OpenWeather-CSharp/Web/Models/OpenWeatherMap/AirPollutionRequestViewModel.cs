@@ -16,7 +16,7 @@ namespace GuepardoApps.OpenWeatherLib.Web.Models.OpenWeatherMap
         /// <summary>
         /// DateTime
         /// </summary>
-        public DateTime DateTime { get; set; }
+        public DateTime? DateTime { get; set; }
 
         /// <summary>
         /// Accuracy

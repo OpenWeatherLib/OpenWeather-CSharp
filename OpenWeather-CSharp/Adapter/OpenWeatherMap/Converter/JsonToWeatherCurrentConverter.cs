@@ -20,19 +20,19 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
 
         public WeatherCurrent Convert(string response)
         {
+            var weatherCurrent = new WeatherCurrent();
+
             try
             {
-                var weatherCurrent = new WeatherCurrent();
+                var jsonObject = JObject.Parse(response);
 
-                JObject jsonObject = JObject.Parse(response);
-
-                JToken coordinationJsonObject = jsonObject.GetValue("coord");
+                var coordinationJsonObject = jsonObject.GetValue("coord");
                 var lat = System.Convert.ToDouble(coordinationJsonObject["lat"].ToString());
                 var lon = System.Convert.ToDouble(coordinationJsonObject["lon"].ToString());
                 weatherCurrent.Coordinates = new Coordinates { Lat = lat, Lon = lon };
 
                 var weatherPart = new WeatherPart();
-                JToken weatherPartJsonObject = jsonObject.GetValue("weather")[0];
+                var weatherPartJsonObject = jsonObject.GetValue("weather")[0];
                 weatherPart.Id = System.Convert.ToUInt16(weatherPartJsonObject["id"].ToString());
                 weatherPart.Main = weatherPartJsonObject["main"].ToString();
                 weatherPart.Description = weatherPartJsonObject["description"].ToString();
@@ -42,7 +42,7 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
                 weatherCurrent.Base = jsonObject["base"].ToString();
 
                 var main = new Main();
-                JToken mainJsonObject = jsonObject.GetValue("main");
+                var mainJsonObject = jsonObject.GetValue("main");
                 main.Temperature = System.Convert.ToDouble(mainJsonObject["temp"].ToString());
                 main.Pressure = System.Convert.ToDouble(mainJsonObject["pressure"].ToString());
                 main.Humidity = System.Convert.ToDouble(mainJsonObject["humidity"].ToString());
@@ -53,19 +53,19 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
                 weatherCurrent.Visibility = System.Convert.ToUInt16(jsonObject["visibility"].ToString());
 
                 var wind = new Wind();
-                JToken windJsonObject = jsonObject.GetValue("wind");
+                var windJsonObject = jsonObject.GetValue("wind");
                 wind.Speed = System.Convert.ToDouble(windJsonObject["speed"].ToString());
                 weatherCurrent.Wind = wind;
 
                 var clouds = new Clouds();
-                JToken cloudsJsonObject = jsonObject.GetValue("clouds");
+                var cloudsJsonObject = jsonObject.GetValue("clouds");
                 clouds.All = System.Convert.ToUInt16(cloudsJsonObject["all"].ToString());
                 weatherCurrent.Clouds = clouds;
 
                 weatherCurrent.Datetime = UnixToDateTime.UnixTimeStampToDateTime(jsonObject["dt"].ToString());
 
                 var sys = new Sys();
-                JToken sysJsonObject = jsonObject.GetValue("sys");
+                var sysJsonObject = jsonObject.GetValue("sys");
                 sys.Id = System.Convert.ToUInt16(sysJsonObject["id"].ToString());
                 sys.Type = System.Convert.ToInt16(sysJsonObject["type"].ToString());
                 sys.Message = System.Convert.ToDouble(sysJsonObject["message"].ToString());
@@ -79,15 +79,13 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
                 weatherCurrent.Cod = System.Convert.ToInt16(jsonObject["cod"].ToString());
 
                 weatherCurrent.WeatherCondition = WeatherConditionEnum.GetByDescription(weatherPart.Main);
-
-                return weatherCurrent;
             }
             catch (Exception exception)
             {
                 _logger.Error(exception.Message);
             }
 
-            return null;
+            return weatherCurrent;
         }
     }
 }

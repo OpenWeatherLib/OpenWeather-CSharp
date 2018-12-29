@@ -17,11 +17,11 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
 
         public UvIndex Convert(string response)
         {
+            var uvIndex = new UvIndex();
+
             try
             {
-                var uvIndex = new UvIndex();
-
-                JObject jsonObject = JObject.Parse(response);
+                var jsonObject = JObject.Parse(response);
 
                 var lat = System.Convert.ToDouble(jsonObject["lat"].ToString());
                 var lon = System.Convert.ToDouble(jsonObject["lon"].ToString());
@@ -30,15 +30,13 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
                 uvIndex.DateTimeIso = jsonObject["date_iso"].ToString();
                 uvIndex.DateTime = System.Convert.ToDateTime(jsonObject["date_iso"].ToString());
                 uvIndex.Value = System.Convert.ToDouble(jsonObject["value"].ToString());
-
-                return uvIndex;
             }
             catch (Exception exception)
             {
                 _logger.Error(exception.Message);
             }
 
-            return null;
+            return uvIndex;
         }
     }
 }

@@ -6,13 +6,13 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
 {
     public interface IOpenWeatherMapService
     {
-        CarbonMonoxideDto LoadCarbonMonoxide(CityDto cityDto, DateTime dateTime, int accuracy);
+        CarbonMonoxideDto LoadCarbonMonoxide(CityDto cityDto, DateTime? dateTime, int accuracy);
 
-        NitrogenDioxideDto LoadNitrogenDioxide(CityDto cityDto, DateTime dateTime, int accuracy);
+        NitrogenDioxideDto LoadNitrogenDioxide(CityDto cityDto, DateTime? dateTime, int accuracy);
 
-        OzoneDto LoadOzone(CityDto cityDto, DateTime dateTime, int accuracy);
+        OzoneDto LoadOzone(CityDto cityDto, DateTime? dateTime, int accuracy);
 
-        SulfurDioxideDto LoadSulfurDioxide(CityDto cityDto, DateTime dateTime, int accuracy);
+        SulfurDioxideDto LoadSulfurDioxide(CityDto cityDto, DateTime? dateTime, int accuracy);
 
         WeatherCurrentDto LoadWeatherCurrent(CityDto cityDto);
 

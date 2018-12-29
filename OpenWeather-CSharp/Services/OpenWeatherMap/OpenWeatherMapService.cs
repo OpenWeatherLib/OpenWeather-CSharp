@@ -5,6 +5,7 @@ using GuepardoApps.OpenWeatherLib.Domain.OpenWeatherMap;
 using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
 using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto;
 using GuepardoApps.OpenWeatherLib.Services.Validation;
+using Microsoft.Extensions.Configuration;
 
 namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
 {
@@ -16,20 +17,26 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
 
         private readonly IOpenWeatherMapAdapter _openWeatherMapAdapter;
 
-        // TODO Use a config file
-        private readonly string _apiKey = "TODO Use a config file";
+        private readonly IConfiguration _configuration;
 
         public OpenWeatherMapService(
             IMapper mapper,
             IValidationService validationService,
-            IOpenWeatherMapAdapter openWeatherMapAdapter)
+            IOpenWeatherMapAdapter openWeatherMapAdapter,
+            IConfiguration configuration)
         {
             _mapper = mapper;
             _validationService = validationService;
             _openWeatherMapAdapter = openWeatherMapAdapter;
+            _configuration = configuration;
+
+            if (_configuration["ApiKeys:OpenWeatherMap"] == string.Empty)
+            {
+                throw new ArgumentException("Invalid OpenWeather api key!");
+            }
         }
 
-        public CarbonMonoxideDto LoadCarbonMonoxide(CityDto cityDto, DateTime dateTime, int accuracy)
+        public CarbonMonoxideDto LoadCarbonMonoxide(CityDto cityDto, DateTime? dateTime, int accuracy)
         {
             var city = _mapper.Map<City>(cityDto);
 
@@ -38,12 +45,12 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
                 return null;
             }
 
-            var carbonMonoxide = _openWeatherMapAdapter.LoadCarbonMonoxide(_apiKey, city, dateTime, accuracy);
+            var carbonMonoxide = _openWeatherMapAdapter.LoadCarbonMonoxide(_configuration["ApiKeys:OpenWeatherMap"], city, dateTime, accuracy);
 
             return _mapper.Map<CarbonMonoxideDto>(carbonMonoxide);
         }
 
-        public NitrogenDioxideDto LoadNitrogenDioxide(CityDto cityDto, DateTime dateTime, int accuracy)
+        public NitrogenDioxideDto LoadNitrogenDioxide(CityDto cityDto, DateTime? dateTime, int accuracy)
         {
             var city = _mapper.Map<City>(cityDto);
 
@@ -52,12 +59,12 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
                 return null;
             }
 
-            var nitrogenDioxide = _openWeatherMapAdapter.LoadNitrogenDioxide(_apiKey, city, dateTime, accuracy);
+            var nitrogenDioxide = _openWeatherMapAdapter.LoadNitrogenDioxide(_configuration["ApiKeys:OpenWeatherMap"], city, dateTime, accuracy);
 
             return _mapper.Map<NitrogenDioxideDto>(nitrogenDioxide);
         }
 
-        public OzoneDto LoadOzone(CityDto cityDto, DateTime dateTime, int accuracy)
+        public OzoneDto LoadOzone(CityDto cityDto, DateTime? dateTime, int accuracy)
         {
             var city = _mapper.Map<City>(cityDto);
 
@@ -66,12 +73,12 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
                 return null;
             }
 
-            var ozone = _openWeatherMapAdapter.LoadOzone(_apiKey, city, dateTime, accuracy);
+            var ozone = _openWeatherMapAdapter.LoadOzone(_configuration["ApiKeys:OpenWeatherMap"], city, dateTime, accuracy);
 
             return _mapper.Map<OzoneDto>(ozone);
         }
 
-        public SulfurDioxideDto LoadSulfurDioxide(CityDto cityDto, DateTime dateTime, int accuracy)
+        public SulfurDioxideDto LoadSulfurDioxide(CityDto cityDto, DateTime? dateTime, int accuracy)
         {
             var city = _mapper.Map<City>(cityDto);
 
@@ -80,7 +87,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
                 return null;
             }
 
-            var sulfurDioxide = _openWeatherMapAdapter.LoadSulfurDioxide(_apiKey, city, dateTime, accuracy);
+            var sulfurDioxide = _openWeatherMapAdapter.LoadSulfurDioxide(_configuration["ApiKeys:OpenWeatherMap"], city, dateTime, accuracy);
 
             return _mapper.Map<SulfurDioxideDto>(sulfurDioxide);
         }
@@ -94,7 +101,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
                 return null;
             }
 
-            var weatherCurrent = _openWeatherMapAdapter.LoadWeatherCurrent(_apiKey, city);
+            var weatherCurrent = _openWeatherMapAdapter.LoadWeatherCurrent(_configuration["ApiKeys:OpenWeatherMap"], city);
 
             return _mapper.Map<WeatherCurrentDto>(weatherCurrent);
         }
@@ -108,7 +115,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
                 return null;
             }
 
-            var weatherForecast = _openWeatherMapAdapter.LoadWeatherForecast(_apiKey, city);
+            var weatherForecast = _openWeatherMapAdapter.LoadWeatherForecast(_configuration["ApiKeys:OpenWeatherMap"], city);
 
             return _mapper.Map<WeatherForecastDto>(weatherForecast);
         }
@@ -122,7 +129,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap
                 return null;
             }
 
-            var uvIndex = _openWeatherMapAdapter.LoadUvIndex(_apiKey, city);
+            var uvIndex = _openWeatherMapAdapter.LoadUvIndex(_configuration["ApiKeys:OpenWeatherMap"], city);
 
             return _mapper.Map<UvIndexDto>(uvIndex);
         }

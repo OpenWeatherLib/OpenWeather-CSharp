@@ -10,7 +10,7 @@ namespace GuepardoApps.OpenWeatherLib.Web.Models.Unsplash.Enum
         /// <summary>
         /// Null
         /// </summary>
-        public static readonly UnsplashImageOrientationViewModelEnum Null = new UnsplashImageOrientationViewModelEnum(0, "Null");
+        public static readonly UnsplashImageOrientationViewModelEnum Default = new UnsplashImageOrientationViewModelEnum(0, "landscape");
 
         /// <summary>
         /// Landscape
@@ -34,7 +34,7 @@ namespace GuepardoApps.OpenWeatherLib.Web.Models.Unsplash.Enum
         {
             get
             {
-                yield return Null;
+                yield return Default;
                 yield return Landscape;
                 yield return Portrait;
                 yield return Squarish;
@@ -72,7 +72,7 @@ namespace GuepardoApps.OpenWeatherLib.Web.Models.Unsplash.Enum
                 }
             }
 
-            return Null;
+            return Default;
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace GuepardoApps.OpenWeatherLib.Web.Models.Unsplash.Enum
                 }
             }
 
-            return Null;
+            return Default;
         }
     }
 }
