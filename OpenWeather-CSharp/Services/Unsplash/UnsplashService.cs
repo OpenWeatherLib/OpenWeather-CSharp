@@ -3,6 +3,8 @@ using GuepardoApps.OpenWeatherLib.Domain.Unsplash;
 using GuepardoApps.OpenWeatherLib.Domain.Unsplash.Enum;
 using GuepardoApps.OpenWeatherLib.Services.Unsplash.Enum;
 using GuepardoApps.OpenWeatherLib.Services.Validation;
+using Microsoft.Extensions.Configuration;
+using System;
 
 namespace GuepardoApps.OpenWeatherLib.Services.Unsplash
 {
@@ -14,17 +16,23 @@ namespace GuepardoApps.OpenWeatherLib.Services.Unsplash
 
         private readonly IUnsplashAdapter _unsplashAdapter;
 
-        // TODO Use a config file
-        private readonly string _clientId = "TODO Use a config file";
+        private readonly IConfiguration _configuration;
 
         public UnsplashService(
             IMapper mapper,
             IValidationService validationService,
-            IUnsplashAdapter unsplashAdapter)
+            IUnsplashAdapter unsplashAdapter,
+            IConfiguration configuration)
         {
             _mapper = mapper;
             _validationService = validationService;
             _unsplashAdapter = unsplashAdapter;
+            _configuration = configuration;
+
+            if (_configuration["ApiKeys:Unsplash"] == string.Empty)
+            {
+                throw new ArgumentException("Invalid Unsplash api key!");
+            }
         }
 
         public string ReceiveImagePictureUrl(string cityName, UnsplashImageOrientationDtoEnum orientation)
@@ -34,7 +42,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.Unsplash
                 return string.Empty;
             }
 
-            return _unsplashAdapter.ReceiveImagePictureUrl(_clientId, cityName, _mapper.Map<UnsplashImageOrientationEnum>(orientation));
+            return _unsplashAdapter.ReceiveImagePictureUrl(_configuration["ApiKeys:Unsplash"], cityName, _mapper.Map<UnsplashImageOrientationEnum>(orientation));
         }
     }
 }

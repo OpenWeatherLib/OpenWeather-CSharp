@@ -18,20 +18,20 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
 
         public SulfurDioxide Convert(string response)
         {
+            var sulfurDioxide = new SulfurDioxide();
+
             try
             {
-                var sulfurDioxide = new SulfurDioxide();
+                var jsonObject = JObject.Parse(response);
 
-                JObject jsonObject = JObject.Parse(response);
+                sulfurDioxide.DateTime = System.Convert.ToDateTime(jsonObject["time"].ToString());
 
-                var lat = System.Convert.ToDouble(jsonObject["latitude"].ToString());
-                var lon = System.Convert.ToDouble(jsonObject["longitude"].ToString());
+                var lat = System.Convert.ToDouble(jsonObject["location"]["latitude"].ToString());
+                var lon = System.Convert.ToDouble(jsonObject["location"]["longitude"].ToString());
                 sulfurDioxide.Coordinates = new Coordinates { Lat = lat, Lon = lon };
 
-                sulfurDioxide.DateTime = System.Convert.ToDateTime(jsonObject["dateTime"].ToString());
-
                 var data = new List<SulfurDioxideData>();
-                JToken dataListJsonObject = jsonObject.GetValue("data");
+                var dataListJsonObject = jsonObject["data"];
                 foreach (JToken dataJsonObject in dataListJsonObject)
                 {
                     var sulfurDioxideData = new SulfurDioxideData
@@ -42,16 +42,15 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
                     };
                     data.Add(sulfurDioxideData);
                 }
-                sulfurDioxide.Data = data;
 
-                return sulfurDioxide;
+                sulfurDioxide.Data = data;
             }
             catch (Exception exception)
             {
                 _logger.Error(exception.Message);
             }
 
-            return null;
+            return sulfurDioxide;
         }
     }
 }

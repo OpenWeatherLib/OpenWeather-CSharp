@@ -7,6 +7,7 @@ using GuepardoApps.OpenWeatherLib.Services.Unsplash;
 using GuepardoApps.OpenWeatherLib.Services.Unsplash.Enum;
 using GuepardoApps.OpenWeatherLib.Services.Validation;
 using Xunit;
+using Microsoft.Extensions.Configuration;
 
 namespace GuepardoApps.OpenWeatherLib.Services.Test.Unsplash
 {
@@ -15,6 +16,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.Unsplash
         private readonly IMapper _mapper;
         private readonly IValidationService _validationService;
         private readonly IUnsplashAdapter _unsplashAdapter;
+        private readonly IConfiguration _configuration;
 
         private IUnsplashService _sut;
 
@@ -23,8 +25,11 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.Unsplash
             _mapper = Substitute.For<IMapper>();
             _validationService = Substitute.For<IValidationService>();
             _unsplashAdapter = Substitute.For<IUnsplashAdapter>();
+            _configuration = Substitute.For<IConfiguration>();
 
-            _sut = new UnsplashService(_mapper, _validationService, _unsplashAdapter);
+            _configuration["ApiKeys:Unsplash"].Returns("ApiKey");
+
+            _sut = new UnsplashService(_mapper, _validationService, _unsplashAdapter, _configuration);
         }
 
         [Fact]
@@ -42,7 +47,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.Unsplash
         {
             // Arrange
             _unsplashAdapter.ReceiveImagePictureUrl(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<UnsplashImageOrientationEnum>()).Returns("URL");
-            _sut = new UnsplashService(_mapper, _validationService, _unsplashAdapter);
+            _sut = new UnsplashService(_mapper, _validationService, _unsplashAdapter, _configuration);
 
             // Act
             var actual = _sut.ReceiveImagePictureUrl("Nuremberg", UnsplashImageOrientationDtoEnum.Landscape);

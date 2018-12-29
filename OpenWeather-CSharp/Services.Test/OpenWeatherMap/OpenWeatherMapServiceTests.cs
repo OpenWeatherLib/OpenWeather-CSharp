@@ -10,6 +10,7 @@ using GuepardoApps.OpenWeatherLib.Services.OpenWeatherMap.Dto;
 using GuepardoApps.OpenWeatherLib.Services.Validation;
 using Xunit;
 using System;
+using Microsoft.Extensions.Configuration;
 
 namespace GuepardoApps.OpenWeatherLib.Services.Test.OpenWeatherMap
 {
@@ -18,6 +19,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.OpenWeatherMap
         private readonly IMapper _mapper;
         private readonly IValidationService _validationService;
         private readonly IOpenWeatherMapAdapter _openWeatherMapAdapter;
+        private readonly IConfiguration _configuration;
 
         private IOpenWeatherMapService _sut;
 
@@ -26,8 +28,11 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.OpenWeatherMap
             _mapper = Substitute.For<IMapper>();
             _validationService = Substitute.For<IValidationService>();
             _openWeatherMapAdapter = Substitute.For<IOpenWeatherMapAdapter>();
+            _configuration = Substitute.For<IConfiguration>();
 
-            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+            _configuration["ApiKeys:OpenWeatherMap"].Returns("ApiKey");
+
+            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter, _configuration);
         }
 
         [Fact]
@@ -38,7 +43,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.OpenWeatherMap
             _openWeatherMapAdapter.LoadCarbonMonoxide(Arg.Any<string>(), Arg.Any<City>(), Arg.Any<DateTime>(), Arg.Any<int>()).Returns(new CarbonMonoxide());
             _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
             _mapper.Map<CarbonMonoxideDto>(Arg.Any<CarbonMonoxide>()).Returns(new CarbonMonoxideDto());
-            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter, _configuration);
 
             // Act
             var actual = _sut.LoadCarbonMonoxide(new CityDto(), DateTime.Now, 1);
@@ -55,7 +60,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.OpenWeatherMap
             _openWeatherMapAdapter.LoadNitrogenDioxide(Arg.Any<string>(), Arg.Any<City>(), Arg.Any<DateTime>(), Arg.Any<int>()).Returns(new NitrogenDioxide());
             _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
             _mapper.Map<NitrogenDioxideDto>(Arg.Any<NitrogenDioxide>()).Returns(new NitrogenDioxideDto());
-            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter, _configuration);
 
             // Act
             var actual = _sut.LoadNitrogenDioxide(new CityDto(), DateTime.Now, 1);
@@ -72,7 +77,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.OpenWeatherMap
             _openWeatherMapAdapter.LoadOzone(Arg.Any<string>(), Arg.Any<City>(), Arg.Any<DateTime>(), Arg.Any<int>()).Returns(new Ozone());
             _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
             _mapper.Map<OzoneDto>(Arg.Any<Ozone>()).Returns(new OzoneDto());
-            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter, _configuration);
 
             // Act
             var actual = _sut.LoadOzone(new CityDto(), DateTime.Now, 1);
@@ -89,7 +94,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.OpenWeatherMap
             _openWeatherMapAdapter.LoadSulfurDioxide(Arg.Any<string>(), Arg.Any<City>(), Arg.Any<DateTime>(), Arg.Any<int>()).Returns(new SulfurDioxide());
             _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
             _mapper.Map<SulfurDioxideDto>(Arg.Any<SulfurDioxide>()).Returns(new SulfurDioxideDto());
-            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter, _configuration);
 
             // Act
             var actual = _sut.LoadSulfurDioxide(new CityDto(), DateTime.Now, 1);
@@ -106,7 +111,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.OpenWeatherMap
             _openWeatherMapAdapter.LoadWeatherCurrent(Arg.Any<string>(), Arg.Any<City>()).Returns(new WeatherCurrent());
             _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
             _mapper.Map<WeatherCurrentDto>(Arg.Any<WeatherCurrent>()).Returns(new WeatherCurrentDto());
-            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter, _configuration);
 
             // Act
             var actual = _sut.LoadWeatherCurrent(new CityDto());
@@ -123,7 +128,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.OpenWeatherMap
             _openWeatherMapAdapter.LoadWeatherForecast(Arg.Any<string>(), Arg.Any<City>()).Returns(new WeatherForecast());
             _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
             _mapper.Map<WeatherForecastDto>(Arg.Any<WeatherForecast>()).Returns(new WeatherForecastDto());
-            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter, _configuration);
 
             // Act
             var actual = _sut.LoadWeatherForecast(new CityDto());
@@ -140,7 +145,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.OpenWeatherMap
             _openWeatherMapAdapter.LoadUvIndex(Arg.Any<string>(), Arg.Any<City>()).Returns(new UvIndex());
             _validationService.Validate(Arg.Any<object>()).ReturnsForAnyArgs(true);
             _mapper.Map<UvIndexDto>(Arg.Any<UvIndex>()).Returns(new UvIndexDto());
-            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter);
+            _sut = new OpenWeatherMapService(_mapper, _validationService, _openWeatherMapAdapter, _configuration);
 
             // Act
             var actual = _sut.LoadUvIndex(new CityDto());

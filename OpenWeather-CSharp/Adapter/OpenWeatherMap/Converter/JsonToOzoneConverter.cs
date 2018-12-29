@@ -17,27 +17,26 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
 
         public Ozone Convert(string response)
         {
+            var ozone = new Ozone();
+
             try
             {
-                var ozone = new Ozone();
+                var jsonObject = JObject.Parse(response);
 
-                JObject jsonObject = JObject.Parse(response);
+                ozone.DateTime = System.Convert.ToDateTime(jsonObject["time"].ToString());
 
-                var lat = System.Convert.ToDouble(jsonObject["latitude"].ToString());
-                var lon = System.Convert.ToDouble(jsonObject["longitude"].ToString());
+                var lat = System.Convert.ToDouble(jsonObject["location"]["latitude"].ToString());
+                var lon = System.Convert.ToDouble(jsonObject["location"]["longitude"].ToString());
                 ozone.Coordinates = new Coordinates { Lat = lat, Lon = lon };
 
-                ozone.DateTime = System.Convert.ToDateTime(jsonObject["dateTime"].ToString());
                 ozone.Data = System.Convert.ToDouble(jsonObject["data"]);
-
-                return ozone;
             }
             catch (Exception exception)
             {
                 _logger.Error(exception.Message);
             }
 
-            return null;
+            return ozone;
         }
     }
 }

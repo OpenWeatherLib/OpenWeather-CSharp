@@ -18,62 +18,56 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
 
         public NitrogenDioxide Convert(string response)
         {
+            var nitrogenDioxide = new NitrogenDioxide();
+
             try
             {
-                var nitrogenDioxide = new NitrogenDioxide();
+                var jsonObject = JObject.Parse(response);
 
-                JObject jsonObject = JObject.Parse(response);
+                nitrogenDioxide.DateTime = System.Convert.ToDateTime(jsonObject["time"].ToString());
 
-                var lat = System.Convert.ToDouble(jsonObject["latitude"].ToString());
-                var lon = System.Convert.ToDouble(jsonObject["longitude"].ToString());
+                var lat = System.Convert.ToDouble(jsonObject["location"]["latitude"].ToString());
+                var lon = System.Convert.ToDouble(jsonObject["location"]["longitude"].ToString());
                 nitrogenDioxide.Coordinates = new Coordinates { Lat = lat, Lon = lon };
 
-                nitrogenDioxide.DateTime = System.Convert.ToDateTime(jsonObject["dateTime"].ToString());
+                var dataJsonObject = jsonObject["data"];
 
-                var data = new List<NitrogenDioxideData>();
-                JToken dataListJsonObject = jsonObject.GetValue("data");
-                foreach (JToken dataJsonObject in dataListJsonObject)
+                var no2JsonObject = dataJsonObject["no2"];
+                var no2 = new NitrogenDioxideDataHolder
                 {
-                    JToken no2JsonObject = dataJsonObject["no2"];
-                    var no2 = new NitrogenDioxideDataHolder
-                    {
-                        Precision = System.Convert.ToDouble(no2JsonObject["precision"].ToString()),
-                        Value = System.Convert.ToDouble(no2JsonObject["value"].ToString())
-                    };
+                    Precision = System.Convert.ToDouble(no2JsonObject["precision"].ToString()),
+                    Value = System.Convert.ToDouble(no2JsonObject["value"].ToString())
+                };
 
-                    JToken no2StratJsonObject = dataJsonObject["no2_strat"];
-                    var no2Strat = new NitrogenDioxideDataHolder
-                    {
-                        Precision = System.Convert.ToDouble(no2StratJsonObject["precision"].ToString()),
-                        Value = System.Convert.ToDouble(no2StratJsonObject["value"].ToString())
-                    };
+                var no2StratJsonObject = dataJsonObject["no2_strat"];
+                var no2Strat = new NitrogenDioxideDataHolder
+                {
+                    Precision = System.Convert.ToDouble(no2StratJsonObject["precision"].ToString()),
+                    Value = System.Convert.ToDouble(no2StratJsonObject["value"].ToString())
+                };
 
-                    JToken no2TropJsonObject = dataJsonObject["no2_trop"];
-                    var no2Trop = new NitrogenDioxideDataHolder
-                    {
-                        Precision = System.Convert.ToDouble(no2TropJsonObject["precision"].ToString()),
-                        Value = System.Convert.ToDouble(no2TropJsonObject["value"].ToString())
-                    };
+                var no2TropJsonObject = dataJsonObject["no2_trop"];
+                var no2Trop = new NitrogenDioxideDataHolder
+                {
+                    Precision = System.Convert.ToDouble(no2TropJsonObject["precision"].ToString()),
+                    Value = System.Convert.ToDouble(no2TropJsonObject["value"].ToString())
+                };
 
-                    var nitrogenDioxideData = new NitrogenDioxideData
-                    {
-                        No2 = no2,
-                        No2Strat = no2Strat,
-                        No2Trop = no2Trop
-                    };
+                var nitrogenDioxideData = new NitrogenDioxideData
+                {
+                    No2 = no2,
+                    No2Strat = no2Strat,
+                    No2Trop = no2Trop
+                };
 
-                    data.Add(nitrogenDioxideData);
-                }
-                nitrogenDioxide.Data = data;
-
-                return nitrogenDioxide;
+                nitrogenDioxide.Data = new List<NitrogenDioxideData> { nitrogenDioxideData };
             }
             catch (Exception exception)
             {
                 _logger.Error(exception.Message);
             }
 
-            return null;
+            return nitrogenDioxide;
         }
     }
 }

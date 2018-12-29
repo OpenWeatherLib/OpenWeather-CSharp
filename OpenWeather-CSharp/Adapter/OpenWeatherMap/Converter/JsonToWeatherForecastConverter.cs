@@ -20,24 +20,24 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
 
         public WeatherForecast Convert(string response)
         {
+            var weatherForecast = new WeatherForecast();
+
             try
             {
-                var weatherForecast = new WeatherForecast();
-
-                JObject jsonObject = JObject.Parse(response);
+                var jsonObject = JObject.Parse(response);
 
                 weatherForecast.Cod = jsonObject["cod"].ToString();
                 weatherForecast.Message = System.Convert.ToDouble(jsonObject["message"].ToString());
                 weatherForecast.Count = System.Convert.ToUInt32(jsonObject["cnt"].ToString());
 
                 var city = new City();
-                JToken cityJsonObject = jsonObject.GetValue("city");
+                var cityJsonObject = jsonObject.GetValue("city");
                 city.Id = System.Convert.ToUInt32(cityJsonObject["id"].ToString());
                 city.Name = cityJsonObject["name"].ToString();
                 city.Country = cityJsonObject["country"].ToString();
                 city.Population = System.Convert.ToUInt32(cityJsonObject["population"].ToString());
 
-                JToken coordinationJsonObject = cityJsonObject["coord"];
+                var coordinationJsonObject = cityJsonObject["coord"];
                 var lat = System.Convert.ToDouble(coordinationJsonObject["lat"].ToString());
                 var lon = System.Convert.ToDouble(coordinationJsonObject["lon"].ToString());
                 city.Coordinates = new Coordinates { Lat = lat, Lon = lon };
@@ -45,15 +45,15 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
                 weatherForecast.City = city;
 
                 var weatherForecastList = new List<WeatherForecastPart>();
-                JToken weatherForecastListJsonObject = jsonObject.GetValue("list");
-                foreach (JToken weatherForecastJsonObject in weatherForecastListJsonObject)
+                var weatherForecastListJsonObject = jsonObject.GetValue("list");
+                foreach (var weatherForecastJsonObject in weatherForecastListJsonObject)
                 {
                     var weatherForecastPart = new WeatherForecastPart();
 
                     weatherForecastPart.DateTime = UnixToDateTime.UnixTimeStampToDateTime(System.Convert.ToDouble(weatherForecastJsonObject["dt"].ToString()));
 
                     var main = new Main();
-                    JToken mainJsonObject = weatherForecastJsonObject["main"];
+                    var mainJsonObject = weatherForecastJsonObject["main"];
                     main.Temperature = System.Convert.ToDouble(mainJsonObject["temp"].ToString());
                     main.TemperatureMin = System.Convert.ToDouble(mainJsonObject["temp_min"].ToString());
                     main.TemperatureMax = System.Convert.ToDouble(mainJsonObject["temp_max"].ToString());
@@ -65,7 +65,7 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
                     weatherForecastPart.Main = main;
 
                     var weatherPart = new WeatherPart();
-                    JToken weatherPartJsonObject = weatherForecastJsonObject["weather"][0];
+                    var weatherPartJsonObject = weatherForecastJsonObject["weather"][0];
                     weatherPart.Id = System.Convert.ToUInt16(weatherPartJsonObject["id"].ToString());
                     weatherPart.Main = weatherPartJsonObject["main"].ToString();
                     weatherPart.Description = weatherPartJsonObject["description"].ToString();
@@ -73,12 +73,12 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
                     weatherForecastPart.Weather = new List<WeatherPart> { weatherPart };
 
                     var clouds = new Clouds();
-                    JToken cloudsJsonObject = weatherForecastJsonObject["clouds"];
+                    var cloudsJsonObject = weatherForecastJsonObject["clouds"];
                     clouds.All = System.Convert.ToUInt16(cloudsJsonObject["all"].ToString());
                     weatherForecastPart.Clouds = clouds;
 
                     var wind = new Wind();
-                    JToken windJsonObject = weatherForecastJsonObject["wind"];
+                    var windJsonObject = weatherForecastJsonObject["wind"];
                     wind.Speed = System.Convert.ToDouble(windJsonObject["speed"].ToString());
                     weatherForecastPart.Wind = wind;
 
@@ -94,16 +94,15 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.OpenWeatherMap.Converter
 
                     weatherForecastList.Add(weatherForecastPart);
                 }
-                weatherForecast.List = weatherForecastList;
 
-                return weatherForecast;
+                weatherForecast.List = weatherForecastList;
             }
             catch (Exception exception)
             {
                 _logger.Error(exception.Message);
             }
 
-            return null;
+            return weatherForecast;
         }
     }
 }

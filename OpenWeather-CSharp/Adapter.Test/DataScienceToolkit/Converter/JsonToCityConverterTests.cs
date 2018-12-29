@@ -23,7 +23,7 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.Test.DataScienceToolkit.Converter
         public void Convert_ShouldReturnExpectedCity()
         {
             // Arrange
-            var response = "{\"address_components\":[{\"short_name\":\"Nuremberg\"},{\"short_name\":\"Germany\"}],\"geometry\":{\"location\":{\"lat\":23.45,\"lng\":65.43}}}";
+            var response = "{results:[{\"address_components\":[{\"short_name\":\"Nuremberg\"},{\"short_name\":\"Germany\"}],\"geometry\":{\"location\":{\"lat\":23.45,\"lng\":65.43}}}]}";
 
             // Act
             var actual = _sut.Convert(response);

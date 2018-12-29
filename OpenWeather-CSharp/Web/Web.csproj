@@ -5,7 +5,7 @@
     <StartupObject></StartupObject>
     <RootNamespace>GuepardoApps.OpenWeatherLib.Web</RootNamespace>
     <AssemblyName>GuepardoApps.OpenWeatherLib.Web</AssemblyName>
-    <Version>0.5.0.1</Version>
+    <Version>0.6.0.0</Version>
     <Authors>Jonas Schubert</Authors>
     <Product>OpenWeatherLib</Product>
     <PackageLicenseUrl>https://github.com/OpenWeatherLib/OpenWeather-CSharp/blob/master/LICENSE.md</PackageLicenseUrl>

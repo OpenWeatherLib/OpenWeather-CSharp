@@ -16,7 +16,7 @@
                 return value.ToString(format);
             }
 
-            return value.ToString("0");
+            return value.ToString("0.0");
         }
     }
 }

@@ -6,9 +6,17 @@
 
 [![Build](https://img.shields.io/badge/build-passing-green.svg)](https://github.com/OpenWeatherLib/OpenWeather-CSharp/tree/master/)
 [![UnitTests](https://img.shields.io/badge/UnitTests-passing-green.svg)](https://github.com/OpenWeatherLib/OpenWeather-CSharp/tree/master/)
-[![Version](https://img.shields.io/badge/version-v0.5.0.1-blue.svg)](https://github.com/OpenWeatherLib/OpenWeather-CSharp/tree/master/)
+[![Version](https://img.shields.io/badge/version-v0.6.0.0-blue.svg)](https://github.com/OpenWeatherLib/OpenWeather-CSharp/tree/master/)
 
-library for downloading and handling data from openweather
+Library for downloading and handling data from openweather
+
+## Api Keys
+
+Required api keys are 
+- [x] https://unsplash.com/
+- [x] https://openweathermap.org/
+
+Keys need to be added under appsettings.json
 
 ## License
 
