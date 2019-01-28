@@ -6,7 +6,7 @@
 
 [![Build](https://img.shields.io/badge/build-passing-green.svg)](OpenWeather-CSharp)
 [![UnitTests](https://img.shields.io/badge/UnitTests-passing-green.svg)](OpenWeather-CSharp)
-[![Version](https://img.shields.io/badge/version-v0.6.0.0-blue.svg)](OpenWeather-CSharp)
+[![Version](https://img.shields.io/badge/version-v0.6.1.0-blue.svg)](OpenWeather-CSharp)
 
 Library for downloading and handling data from openweather
 
@@ -17,6 +17,9 @@ Required api keys are
 - [x] https://openweathermap.org/
 
 Keys need to be added under appsettings.json
+
+## Requirements
+- [x] [.NetCore Runtime v2.2.1](https://dotnet.microsoft.com/download)
 
 ## License
 
