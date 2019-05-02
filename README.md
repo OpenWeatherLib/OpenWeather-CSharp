@@ -1,4 +1,4 @@
-# OpenWeather-C# - master branch
+# OpenWeather-C#
 
 [![Platform](https://img.shields.io/badge/platform-Windows10-blue.svg)](https://de.wikipedia.org/wiki/Microsoft_Windows_10)
 [![Paypal](https://img.shields.io/badge/paypal-donate-blue.svg)](https://www.paypal.me/GuepardoApps)
