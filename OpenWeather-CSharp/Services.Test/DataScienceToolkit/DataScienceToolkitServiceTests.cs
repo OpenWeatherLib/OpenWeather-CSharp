@@ -5,7 +5,6 @@ using FluentAssertions;
 using NSubstitute;
 using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit;
 using GuepardoApps.OpenWeatherLib.Services.DataScienceToolkit.Dto;
-using GuepardoApps.OpenWeatherLib.Services.Validation;
 using Xunit;
 
 namespace GuepardoApps.OpenWeatherLib.Services.Test.DataScienceToolkit
@@ -13,7 +12,6 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.DataScienceToolkit
     public class DataScienceToolkitServiceTests
     {
         private readonly IMapper _mapper;
-        private readonly IValidationService _validationService;
         private readonly IDataScienceToolkitAdapter _dataScienceToolkitAdapter;
 
         private IDataScienceToolkitService _sut;
@@ -21,10 +19,9 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.DataScienceToolkit
         public DataScienceToolkitServiceTests()
         {
             _mapper = Substitute.For<IMapper>();
-            _validationService = Substitute.For<IValidationService>();
             _dataScienceToolkitAdapter = Substitute.For<IDataScienceToolkitAdapter>();
 
-            _sut = new DataScienceToolkitService(_mapper, _validationService, _dataScienceToolkitAdapter);
+            _sut = new DataScienceToolkitService(_mapper, _dataScienceToolkitAdapter);
         }
 
         [Fact]
@@ -43,7 +40,7 @@ namespace GuepardoApps.OpenWeatherLib.Services.Test.DataScienceToolkit
             // Arrange
             _mapper.Map<CityDto>(Arg.Any<City>()).Returns(new CityDto { Name = "Nuremberg", Coordinates = new CoordinatesDto { Lat = 35.3f, Lon = 45.0f } });
             _dataScienceToolkitAdapter.LoadCityData(Arg.Any<string>()).Returns(new City { Name = "Nuremberg", Coordinates = new Coordinates { Lat = 35.3f, Lon = 45.0f } });
-            _sut = new DataScienceToolkitService(_mapper, _validationService, _dataScienceToolkitAdapter);
+            _sut = new DataScienceToolkitService(_mapper, _dataScienceToolkitAdapter);
 
             // Act
             var actual = _sut.LoadCityData("Nuremberg");

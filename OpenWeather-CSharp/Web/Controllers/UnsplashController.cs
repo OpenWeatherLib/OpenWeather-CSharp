@@ -34,10 +34,8 @@ namespace GuepardoApps.OpenWeatherLib.Web.Controllers
         /// <param name="unsplashImageOrientationViewModelEnumId">unsplashImageOrientationViewModelEnumId</param>
         /// <returns>string</returns>
         [HttpGet]
-        public ActionResult<string> ReceiveImagePictureUrl(string cityName, int unsplashImageOrientationViewModelEnumId)
-        {
-            var unsplashImageOrientationViewModelEnum = UnsplashImageOrientationViewModelEnum.GetById(unsplashImageOrientationViewModelEnumId);
-            return _unsplashService.ReceiveImagePictureUrl(cityName, _mapper.Map<UnsplashImageOrientationDtoEnum>(unsplashImageOrientationViewModelEnum));
-        }
+        public ActionResult<string> ReceiveImagePictureUrl(string cityName, int unsplashImageOrientationViewModelEnumId) =>
+            _unsplashService.ReceiveImagePictureUrl(cityName,
+                _mapper.Map<UnsplashImageOrientationDtoEnum>(UnsplashImageOrientationViewModelEnum.GetById(unsplashImageOrientationViewModelEnumId)));
     }
 }

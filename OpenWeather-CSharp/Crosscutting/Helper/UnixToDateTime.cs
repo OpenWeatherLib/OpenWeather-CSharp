@@ -22,12 +22,8 @@ namespace GuepardoApps.OpenWeatherLib.Crosscutting.Helper
             return UnixTimeStampToDateTime(unixTimeStamp);
         }
 
-        public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
-        {
-            // Unix timestamp is seconds past epoch
-            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
-            return dtDateTime;
-        }
+        // Unix timestamp is seconds past epoch
+        public static DateTime UnixTimeStampToDateTime(double unixTimeStamp) =>
+            new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(unixTimeStamp).ToLocalTime();
     }
 }

@@ -34,13 +34,9 @@ namespace GuepardoApps.OpenWeatherLib.Web.Controllers
         /// <param name="request">AirPollutionRequestViewModel</param>
         /// <returns>CarbonMonoxideViewModel</returns>
         [HttpGet]
-        public ActionResult<CarbonMonoxideViewModel> LoadCarbonMonoxide([FromQuery]AirPollutionRequestViewModel request)
-        {
-            var cityDto = _mapper.Map<CityDto>(request.City);
-            var carbonMonoxideDto = _openWeatherMapService.LoadCarbonMonoxide(cityDto, request.DateTime, request.Accuracy);
-            var carbonMonoxideViewModel = _mapper.Map<CarbonMonoxideViewModel>(carbonMonoxideDto);
-            return carbonMonoxideViewModel;
-        }
+        public ActionResult<CarbonMonoxideViewModel> LoadCarbonMonoxide([FromQuery]AirPollutionRequestViewModel request) =>
+            _mapper.Map<CarbonMonoxideViewModel>(
+                _openWeatherMapService.LoadCarbonMonoxide(_mapper.Map<CityDto>(request.City), request.DateTime, request.Accuracy));
 
         /// <summary>
         /// LoadNitrogenDioxide
@@ -48,13 +44,9 @@ namespace GuepardoApps.OpenWeatherLib.Web.Controllers
         /// <param name="request">AirPollutionRequestViewModel</param>
         /// <returns>NitrogenDioxideViewModel</returns>
         [HttpGet]
-        public ActionResult<NitrogenDioxideViewModel> LoadNitrogenDioxide([FromQuery]AirPollutionRequestViewModel request)
-        {
-            var cityDto = _mapper.Map<CityDto>(request.City);
-            var nitrogenDioxideDto = _openWeatherMapService.LoadNitrogenDioxide(cityDto, request.DateTime, request.Accuracy);
-            var nitrogenDioxideViewModel = _mapper.Map<NitrogenDioxideViewModel>(nitrogenDioxideDto);
-            return nitrogenDioxideViewModel;
-        }
+        public ActionResult<NitrogenDioxideViewModel> LoadNitrogenDioxide([FromQuery]AirPollutionRequestViewModel request) =>
+            _mapper.Map<NitrogenDioxideViewModel>(
+                _openWeatherMapService.LoadNitrogenDioxide(_mapper.Map<CityDto>(request.City), request.DateTime, request.Accuracy));
 
         /// <summary>
         /// LoadOzone
@@ -62,13 +54,9 @@ namespace GuepardoApps.OpenWeatherLib.Web.Controllers
         /// <param name="request">AirPollutionRequestViewModel</param>
         /// <returns>OzoneViewModel</returns>
         [HttpGet]
-        public ActionResult<OzoneViewModel> LoadOzone([FromQuery]AirPollutionRequestViewModel request)
-        {
-            var cityDto = _mapper.Map<CityDto>(request.City);
-            var ozoneDto = _openWeatherMapService.LoadOzone(cityDto, request.DateTime, request.Accuracy);
-            var ozoneViewModel = _mapper.Map<OzoneViewModel>(ozoneDto);
-            return ozoneViewModel;
-        }
+        public ActionResult<OzoneViewModel> LoadOzone([FromQuery]AirPollutionRequestViewModel request) =>
+            _mapper.Map<OzoneViewModel>(
+                _openWeatherMapService.LoadOzone(_mapper.Map<CityDto>(request.City), request.DateTime, request.Accuracy));
 
         /// <summary>
         /// LoadSulfurDioxide
@@ -76,13 +64,9 @@ namespace GuepardoApps.OpenWeatherLib.Web.Controllers
         /// <param name="request">AirPollutionRequestViewModel</param>
         /// <returns>SulfurDioxideViewModel</returns>
         [HttpGet]
-        public ActionResult<SulfurDioxideViewModel> LoadSulfurDioxide([FromQuery]AirPollutionRequestViewModel request)
-        {
-            var cityDto = _mapper.Map<CityDto>(request.City);
-            var sulfurDioxideDto = _openWeatherMapService.LoadSulfurDioxide(cityDto, request.DateTime, request.Accuracy);
-            var sulfurDioxideViewModel = _mapper.Map<SulfurDioxideViewModel>(sulfurDioxideDto);
-            return sulfurDioxideViewModel;
-        }
+        public ActionResult<SulfurDioxideViewModel> LoadSulfurDioxide([FromQuery]AirPollutionRequestViewModel request) =>
+            _mapper.Map<SulfurDioxideViewModel>(
+                _openWeatherMapService.LoadSulfurDioxide(_mapper.Map<CityDto>(request.City), request.DateTime, request.Accuracy));
 
         /// <summary>
         /// LoadUvIndex
@@ -90,13 +74,10 @@ namespace GuepardoApps.OpenWeatherLib.Web.Controllers
         /// <param name="cityViewModel">cityViewModel</param>
         /// <returns>UvIndexViewModel</returns>
         [HttpGet]
-        public ActionResult<UvIndexViewModel> LoadUvIndex([FromQuery]CityViewModel cityViewModel)
-        {
-            var cityDto = _mapper.Map<CityDto>(cityViewModel);
-            var uvIndexDto = _openWeatherMapService.LoadUvIndex(cityDto);
-            var uvIndexViewModel = _mapper.Map<UvIndexViewModel>(uvIndexDto);
-            return uvIndexViewModel;
-        }
+        public ActionResult<UvIndexViewModel> LoadUvIndex([FromQuery]CityViewModel cityViewModel) =>
+            _mapper.Map<UvIndexViewModel>(
+                _openWeatherMapService.LoadUvIndex(_mapper.Map<CityDto>(cityViewModel)));
+
 
         /// <summary>
         /// LoadWeatherCurrent
@@ -104,13 +85,9 @@ namespace GuepardoApps.OpenWeatherLib.Web.Controllers
         /// <param name="cityViewModel">cityViewModel</param>
         /// <returns>WeatherCurrentViewModel</returns>
         [HttpGet]
-        public ActionResult<WeatherCurrentViewModel> LoadWeatherCurrent([FromQuery]CityViewModel cityViewModel)
-        {
-            var cityDto = _mapper.Map<CityDto>(cityViewModel);
-            var weatherCurrentDto = _openWeatherMapService.LoadWeatherCurrent(cityDto);
-            var weatherCurrentViewModel = _mapper.Map<WeatherCurrentViewModel>(weatherCurrentDto);
-            return weatherCurrentViewModel;
-        }
+        public ActionResult<WeatherCurrentViewModel> LoadWeatherCurrent([FromQuery]CityViewModel cityViewModel) =>
+            _mapper.Map<WeatherCurrentViewModel>(
+                _openWeatherMapService.LoadWeatherCurrent(_mapper.Map<CityDto>(cityViewModel)));
 
         /// <summary>
         /// LoadWeatherForecast
@@ -118,12 +95,8 @@ namespace GuepardoApps.OpenWeatherLib.Web.Controllers
         /// <param name="cityViewModel">cityViewModel</param>
         /// <returns>WeatherForecastViewModel</returns>
         [HttpGet]
-        public ActionResult<WeatherForecastViewModel> LoadWeatherForecast([FromQuery]CityViewModel cityViewModel)
-        {
-            var cityDto = _mapper.Map<CityDto>(cityViewModel);
-            var weatherForecastDto = _openWeatherMapService.LoadWeatherForecast(cityDto);
-            var weatherForecastViewModel = _mapper.Map<WeatherForecastViewModel>(weatherForecastDto);
-            return weatherForecastViewModel;
-        }
+        public ActionResult<WeatherForecastViewModel> LoadWeatherForecast([FromQuery]CityViewModel cityViewModel) =>
+            _mapper.Map<WeatherForecastViewModel>(
+                _openWeatherMapService.LoadWeatherForecast(_mapper.Map<CityDto>(cityViewModel)));
     }
 }

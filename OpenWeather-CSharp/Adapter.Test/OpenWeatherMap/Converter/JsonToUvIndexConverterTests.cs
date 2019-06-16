@@ -33,8 +33,8 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.Test.OpenWeatherMap.Converter
             actual.Should().NotBeNull();
             actual.Coordinates.Lat.Should().Be(37.75);
             actual.Coordinates.Lon.Should().Be(-122.37);
-            actual.DateTimeIso.Should().Be("13/09/2018 12:00:00");
-            actual.DateTime.Should().Be(Convert.ToDateTime("13/09/2018 12:00:00"));
+            actual.DateTimeIso.Should().Be("13.09.2018 12:00:00");
+            actual.DateTime.Should().Be(Convert.ToDateTime("13.09.2018 12:00:00"));
             actual.Value.Should().Be(6.96);
         }
     }

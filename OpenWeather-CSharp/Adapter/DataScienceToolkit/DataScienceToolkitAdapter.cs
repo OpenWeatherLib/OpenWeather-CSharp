@@ -15,11 +15,7 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.DataScienceToolkit
             _jsonToCityConverter = jsonToCityConverter;
         }
 
-        public City LoadCityData(string cityName)
-        {
-            var url = string.Format(GeoCodeForCityUrl, cityName);
-            var response = CleanResponse(GetRequest(url));
-            return _jsonToCityConverter.Convert(response);
-        }
+        public City LoadCityData(string cityName) =>
+            _jsonToCityConverter.Convert(CleanResponse(GetRequest(string.Format(GeoCodeForCityUrl, cityName))));
     }
 }

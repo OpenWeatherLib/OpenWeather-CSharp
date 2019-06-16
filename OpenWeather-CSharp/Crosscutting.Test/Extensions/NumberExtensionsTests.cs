@@ -9,12 +9,12 @@ namespace GuepardoApps.OpenWeatherLib.Crosscutting.Test.Extensions
     {
         public static IEnumerable<object[]> ToFixedTestData()
         {
-            yield return new object[] { 5.43210, 0, "5.4" };
-            yield return new object[] { 5.43210, 1, "5.4" };
-            yield return new object[] { 5.43210, 2, "5.43" };
-            yield return new object[] { 5.43210, 3, "5.432" };
-            yield return new object[] { 5.43210, 4, "5.4321" };
-            yield return new object[] { 5.43210, 5, "5.4321" };
+            yield return new object[] { 5.43210, 0, "5,4" };
+            yield return new object[] { 5.43210, 1, "5,4" };
+            yield return new object[] { 5.43210, 2, "5,43" };
+            yield return new object[] { 5.43210, 3, "5,432" };
+            yield return new object[] { 5.43210, 4, "5,4321" };
+            yield return new object[] { 5.43210, 5, "5,4321" };
         }
 
         [Theory]

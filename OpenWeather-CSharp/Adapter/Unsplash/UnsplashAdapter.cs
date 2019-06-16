@@ -15,11 +15,7 @@ namespace GuepardoApps.OpenWeatherLib.Adapter.Unsplash
             _jsonToUrlConverter = jsonToUrlConverter;
         }
 
-        public string ReceiveImagePictureUrl(string clientId, string cityName, UnsplashImageOrientationEnum orientation)
-        {
-            var url = string.Format(ImageApiUrl, clientId, orientation.Description, cityName);
-            var response = CleanResponse(GetRequest(url));
-            return _jsonToUrlConverter.Convert(response);
-        }
+        public string ReceiveImagePictureUrl(string clientId, string cityName, UnsplashImageOrientationEnum orientation) =>
+            _jsonToUrlConverter.Convert(CleanResponse(GetRequest(string.Format(ImageApiUrl, clientId, orientation.Description, cityName))));
     }
 }

@@ -32,10 +32,7 @@ namespace GuepardoApps.OpenWeatherLib.Web.Controllers
         /// <param name="cityName">cityName</param>
         /// <returns>CityViewModel</returns>
         [HttpGet]
-        public ActionResult<CityViewModel> LoadCityData(string cityName)
-        {
-            var cityDto = _dataScienceToolkitService.LoadCityData(cityName);
-            return _mapper.Map<CityViewModel>(cityDto);
-        }
+        public ActionResult<CityViewModel> LoadCityData(string cityName) =>
+            _mapper.Map<CityViewModel>(_dataScienceToolkitService.LoadCityData(cityName));
     }
 }

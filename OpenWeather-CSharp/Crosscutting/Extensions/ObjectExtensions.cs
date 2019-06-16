@@ -2,14 +2,6 @@
 {
     public static class ObjectExtensions
     {
-        public static bool IsEmpty(this object value)
-        {
-            if (value is string)
-            {
-                return string.IsNullOrWhiteSpace(value.ToString());
-            }
-
-            return value == null;
-        }
+        public static bool IsEmpty(this object value) => value is string ? string.IsNullOrWhiteSpace(value.ToString()) : value == null;
     }
 }
