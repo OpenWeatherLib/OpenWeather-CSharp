@@ -67,8 +67,7 @@ namespace GuepardoApps.OpenWeatherLib.Web
                     Description = Configuration["Swagger:Description"]
                 });
 
-                swaggerGenOptions.IncludeXmlComments(
-                    $"{AppDomain.CurrentDomain.BaseDirectory}{Configuration["Swagger:DocumentationFile"]}");
+                swaggerGenOptions.IncludeXmlComments($"{AppDomain.CurrentDomain.BaseDirectory}{Configuration["Swagger:DocumentationFile"]}");
                 swaggerGenOptions.DescribeAllParametersInCamelCase();
                 swaggerGenOptions.DescribeAllEnumsAsStrings();
             });
@@ -113,8 +112,7 @@ namespace GuepardoApps.OpenWeatherLib.Web
             {
                 c.DocumentTitle = Configuration["Swagger:Title"];
                 c.SwaggerEndpoint(
-                    string.Format(Configuration["Swagger:Endpoint"], Configuration["BackendBasepath"],
-                        Configuration["Swagger:Version"]),
+                    string.Format(Configuration["Swagger:Endpoint"], Configuration["BackendBasepath"], Configuration["Swagger:Version"]),
                     string.Format(Configuration["Swagger:EndpointName"], Assembly.GetExecutingAssembly().GetAssemblyVersion()));
             });
         }

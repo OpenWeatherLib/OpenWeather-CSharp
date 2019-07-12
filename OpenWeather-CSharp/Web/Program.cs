@@ -21,11 +21,7 @@ namespace GuepardoApps.OpenWeatherLib.Web
         /// Main
         /// </summary>
         /// <param name="args">args</param>
-        public static void Main(string[] args)
-        {
-            var host = BuildWebHost(args);
-            host.Run();
-        }
+        public static void Main(string[] args) => BuildWebHost(args).Run();
 
         /// <summary>
         /// BuildWebHost
@@ -39,7 +35,7 @@ namespace GuepardoApps.OpenWeatherLib.Web
                     GetCustomConfigJsonFilenames(Path.Combine(Directory.GetCurrentDirectory()),
                             hostingContext.HostingEnvironment.EnvironmentName,
                             $"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json")
-                        .ForEach(s => config.AddJsonFile(s));
+                        .ForEach(setting => config.AddJsonFile(setting));
                 })
                 .ConfigureServices(services => services.AddAutofac())
                 .UseContentRoot(Directory.GetCurrentDirectory())
@@ -48,10 +44,10 @@ namespace GuepardoApps.OpenWeatherLib.Web
                 .Build();
 
         private static List<string> GetCustomConfigJsonFilenames(string path, string environmentName,
-            params string[] exceptFilenames)
-        {
-            return Directory.GetFiles(path, $"*{environmentName}.json").Select(Path.GetFileName)
-                .Where(f => !exceptFilenames.Contains(f, StringComparer.OrdinalIgnoreCase)).ToList();
-        }
+            params string[] exceptFilenames) => Directory
+                .GetFiles(path, $"*{environmentName}.json")
+                .Select(Path.GetFileName)
+                .Where(fileName => !exceptFilenames.Contains(fileName, StringComparer.OrdinalIgnoreCase))
+                .ToList();
     }
 }

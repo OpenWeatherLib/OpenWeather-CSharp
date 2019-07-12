@@ -25,7 +25,9 @@ namespace GuepardoApps.OpenWeatherLib.Services.Validation
 
         private bool RequiredPropertiesAreProvided<T>(T validationObject)
         {
-            var requiredProperties = validationObject.GetType().GetProperties()
+            var requiredProperties = validationObject
+                .GetType()
+                .GetProperties()
                 .Where(x => x.GetSingleAttribute<RequiredAttribute>() != null)
                 .ToList();
 
@@ -42,7 +44,9 @@ namespace GuepardoApps.OpenWeatherLib.Services.Validation
 
         private bool IsNotDefaultPropertiesAreNotDefault<T>(T validationObject)
         {
-            var isNotDefaultProperties = validationObject.GetType().GetProperties()
+            var isNotDefaultProperties = validationObject
+                .GetType()
+                .GetProperties()
                 .Where(x => x.GetSingleAttribute<IsNotDefaultAttribute>() != null)
                 .Select(x => new
                 {

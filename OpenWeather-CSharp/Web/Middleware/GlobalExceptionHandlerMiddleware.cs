@@ -48,8 +48,8 @@ namespace GuepardoApps.OpenWeatherLib.Web.Middleware
         /// <returns>Task</returns>
         public async Task Invoke(HttpContext httpContext)
         {
-            var ex = httpContext.Features.Get<IExceptionHandlerFeature>();
-            if (ex?.Error != null)
+            var exception = httpContext.Features.Get<IExceptionHandlerFeature>();
+            if (exception?.Error != null)
             {
                 httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 httpContext.Response.ContentType = "application/json";
@@ -60,7 +60,7 @@ namespace GuepardoApps.OpenWeatherLib.Web.Middleware
                 }
 
                 var method = httpContext.Request.Method;
-                _logger.Fatal(ex.Error, "Unhandled exception processing {method}", method);
+                _logger.Fatal(exception.Error, "Unhandled exception processing {method}", method);
 
                 await httpContext.Response.WriteAsync("An unhandled exception occured.").ConfigureAwait(false);
             }

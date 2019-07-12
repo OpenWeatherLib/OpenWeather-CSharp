@@ -30,11 +30,9 @@ namespace GuepardoApps.OpenWeatherLib.Services.Unsplash
             }
         }
 
-        public string ReceiveImagePictureUrl(string cityName, UnsplashImageOrientationDtoEnum orientation)
-        {
-            return string.IsNullOrWhiteSpace(cityName) || orientation == UnsplashImageOrientationDtoEnum.Null
+        public string ReceiveImagePictureUrl(string cityName, UnsplashImageOrientationDtoEnum orientation) =>
+            string.IsNullOrWhiteSpace(cityName) || orientation == UnsplashImageOrientationDtoEnum.Null
                 ? string.Empty
                 : _unsplashAdapter.ReceiveImagePictureUrl(_configuration["ApiKeys:Unsplash"], cityName, _mapper.Map<UnsplashImageOrientationEnum>(orientation));
-        }
     }
 }
